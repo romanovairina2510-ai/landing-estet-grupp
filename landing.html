@@ -1,0 +1,1366 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Эстет Групп — Тёплый балкон под ключ в Москве и МО</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Philosopher:wght@400;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --color-text: #462908;
+      --color-text-muted: #7a5c3a;
+      --color-text-light: #a8896a;
+      --color-bg: #F5F4F0;
+      --color-bg-white: #ffffff;
+      --color-accent: #8B5A2B;
+      --color-accent-light: #C49A6C;
+      --color-accent-dark: #5C3A1E;
+      --color-border: #e4ddd4;
+      --gradient-heading: linear-gradient(135deg, #462908 0%, #8B5A2B 50%, #C49A6C 100%);
+      --gradient-cta: linear-gradient(135deg, #8B5A2B 0%, #C49A6C 100%);
+      --shadow-card: 0 4px 24px rgba(70, 41, 8, 0.08);
+      --shadow-card-hover: 0 12px 40px rgba(70, 41, 8, 0.14);
+      --radius: 16px;
+      --radius-sm: 10px;
+      --font-heading: 'Philosopher', serif;
+      --font-body: 'Manrope', sans-serif;
+      --transition: 0.35s ease;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─────────────────────────────────────────────
+       UTILITIES
+    ───────────────────────────────────────────── */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section {
+      padding: 96px 0;
+    }
+
+    .section--white {
+      background: var(--color-bg-white);
+    }
+
+    .section-label {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-accent-light);
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 700;
+      color: var(--color-text);
+      line-height: 1.25;
+      margin-bottom: 20px;
+    }
+
+    .section-subtitle {
+      font-size: 16px;
+      color: var(--color-text-muted);
+      max-width: 560px;
+      line-height: 1.7;
+    }
+
+    .gradient-text {
+      background: var(--gradient-heading);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ─────────────────────────────────────────────
+       ANIMATIONS
+    ───────────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal--delay-1 { transition-delay: 0.1s; }
+    .reveal--delay-2 { transition-delay: 0.2s; }
+    .reveal--delay-3 { transition-delay: 0.3s; }
+    .reveal--delay-4 { transition-delay: 0.4s; }
+    .reveal--delay-5 { transition-delay: 0.5s; }
+
+    /* ─────────────────────────────────────────────
+       NAV
+    ───────────────────────────────────────────── */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      padding: 18px 0;
+      background: rgba(245, 244, 240, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid transparent;
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+
+    .nav.scrolled {
+      border-color: var(--color-border);
+      box-shadow: 0 2px 20px rgba(70, 41, 8, 0.06);
+    }
+
+    .nav__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav__logo {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--color-text);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+
+    .nav__logo span {
+      background: var(--gradient-heading);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav__cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--gradient-cta);
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 10px 22px;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: opacity var(--transition), transform var(--transition), box-shadow var(--transition);
+      box-shadow: 0 4px 16px rgba(139, 90, 43, 0.28);
+    }
+
+    .nav__cta:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 24px rgba(139, 90, 43, 0.34);
+    }
+
+    /* ─────────────────────────────────────────────
+       HERO
+    ───────────────────────────────────────────── */
+    .hero {
+      padding: 160px 0 96px;
+      background: var(--color-bg);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -200px;
+      right: -200px;
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(196, 154, 108, 0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -100px;
+      left: -150px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(139, 90, 43, 0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero__content {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+    }
+
+    .hero__eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: 28px;
+      opacity: 0;
+      animation: fadeSlideUp 0.6s ease 0.15s forwards;
+    }
+
+    .hero__eyebrow::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 2px;
+      background: var(--gradient-cta);
+      border-radius: 2px;
+    }
+
+    .hero__title {
+      font-family: var(--font-heading);
+      font-size: clamp(36px, 6vw, 68px);
+      font-weight: 700;
+      line-height: 1.12;
+      margin-bottom: 24px;
+      opacity: 0;
+      animation: fadeSlideUp 0.6s ease 0.3s forwards;
+    }
+
+    .hero__subtitle {
+      font-size: clamp(15px, 2vw, 18px);
+      color: var(--color-text-muted);
+      line-height: 1.65;
+      max-width: 540px;
+      margin-bottom: 40px;
+      opacity: 0;
+      animation: fadeSlideUp 0.6s ease 0.45s forwards;
+    }
+
+    .hero__badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 44px;
+      opacity: 0;
+      animation: fadeSlideUp 0.6s ease 0.58s forwards;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--color-bg-white);
+      border: 1px solid var(--color-border);
+      color: var(--color-text);
+      font-size: 13px;
+      font-weight: 500;
+      padding: 8px 16px;
+      border-radius: 50px;
+      box-shadow: 0 2px 8px rgba(70, 41, 8, 0.05);
+    }
+
+    .badge__dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gradient-cta);
+      flex-shrink: 0;
+    }
+
+    .hero__actions {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      opacity: 0;
+      animation: fadeSlideUp 0.6s ease 0.7s forwards;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: var(--gradient-cta);
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: 16px;
+      font-weight: 600;
+      padding: 18px 40px;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: opacity var(--transition), transform var(--transition), box-shadow var(--transition);
+      box-shadow: 0 6px 28px rgba(139, 90, 43, 0.32);
+      align-self: flex-start;
+    }
+
+    .btn-primary:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 36px rgba(139, 90, 43, 0.38);
+    }
+
+    .btn-primary:active {
+      transform: translateY(0);
+    }
+
+    .hero__micro {
+      font-size: 12px;
+      color: var(--color-text-light);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero__micro::before {
+      content: '✓';
+      color: var(--color-accent);
+      font-weight: 700;
+    }
+
+    @keyframes fadeSlideUp {
+      from {
+        opacity: 0;
+        transform: translateY(28px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ─────────────────────────────────────────────
+       PROBLEM → SOLUTION
+    ───────────────────────────────────────────── */
+    .transform {
+      background: var(--color-bg-white);
+    }
+
+    .transform__grid {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 0;
+      align-items: stretch;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-top: 52px;
+    }
+
+    .transform__panel {
+      padding: 48px 40px;
+    }
+
+    .transform__panel--problem {
+      background: #f9f7f4;
+    }
+
+    .transform__panel--solution {
+      background: linear-gradient(145deg, #462908 0%, #7a4a1e 100%);
+      color: #fff;
+    }
+
+    .transform__divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 64px;
+      background: var(--color-bg-white);
+      border-left: 1px solid var(--color-border);
+      border-right: 1px solid var(--color-border);
+    }
+
+    .transform__arrow {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--gradient-cta);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 18px;
+      box-shadow: 0 4px 16px rgba(139, 90, 43, 0.3);
+    }
+
+    .transform__tag {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .transform__panel--problem .transform__tag {
+      color: var(--color-text-light);
+    }
+
+    .transform__panel--solution .transform__tag {
+      color: rgba(255,255,255,0.55);
+    }
+
+    .transform__panel-title {
+      font-family: var(--font-heading);
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      line-height: 1.3;
+    }
+
+    .transform__panel--solution .transform__panel-title {
+      color: #fff;
+    }
+
+    .transform__list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .transform__list li {
+      font-size: 14px;
+      color: var(--color-text-muted);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      line-height: 1.5;
+    }
+
+    .transform__panel--solution .transform__list li {
+      color: rgba(255,255,255,0.82);
+    }
+
+    .transform__list li::before {
+      content: attr(data-icon);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ─────────────────────────────────────────────
+       ADVANTAGES
+    ───────────────────────────────────────────── */
+    .advantages__header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .advantages__header .section-subtitle {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .advantages__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .adv-card {
+      background: var(--color-bg-white);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      padding: 40px 32px;
+      transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
+    }
+
+    .adv-card:hover {
+      box-shadow: var(--shadow-card-hover);
+      transform: translateY(-4px);
+      border-color: rgba(139, 90, 43, 0.2);
+    }
+
+    .adv-card__icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(196, 154, 108, 0.15), rgba(139, 90, 43, 0.08));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin-bottom: 24px;
+      border: 1px solid rgba(196, 154, 108, 0.2);
+    }
+
+    .adv-card__title {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--color-text);
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+
+    .adv-card__text {
+      font-size: 14px;
+      color: var(--color-text-muted);
+      line-height: 1.65;
+    }
+
+    /* ─────────────────────────────────────────────
+       FOR WHOM
+    ───────────────────────────────────────────── */
+    .for-whom {
+      background: var(--color-bg);
+    }
+
+    .for-whom__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+      margin-top: 52px;
+    }
+
+    .for-whom__list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .for-whom__item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: var(--color-bg-white);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      padding: 18px 22px;
+      transition: box-shadow var(--transition), border-color var(--transition);
+    }
+
+    .for-whom__item:hover {
+      box-shadow: var(--shadow-card);
+      border-color: rgba(139, 90, 43, 0.15);
+    }
+
+    .for-whom__item-icon {
+      font-size: 22px;
+      flex-shrink: 0;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, rgba(196, 154, 108, 0.12), rgba(139, 90, 43, 0.06));
+      border-radius: 10px;
+    }
+
+    .for-whom__item-text {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--color-text);
+    }
+
+    .for-whom__visual {
+      background: linear-gradient(145deg, #462908 0%, #7a4a1e 100%);
+      border-radius: var(--radius);
+      padding: 52px 44px;
+      color: #fff;
+    }
+
+    .for-whom__visual-title {
+      font-family: var(--font-heading);
+      font-size: 26px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      line-height: 1.3;
+    }
+
+    .for-whom__visual-text {
+      font-size: 15px;
+      opacity: 0.8;
+      line-height: 1.65;
+      margin-bottom: 32px;
+    }
+
+    .for-whom__stat {
+      display: flex;
+      gap: 32px;
+    }
+
+    .stat {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .stat__num {
+      font-family: var(--font-heading);
+      font-size: 36px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1;
+    }
+
+    .stat__label {
+      font-size: 12px;
+      color: rgba(255,255,255,0.6);
+      font-weight: 500;
+    }
+
+    /* ─────────────────────────────────────────────
+       SERVICES INCLUDED
+    ───────────────────────────────────────────── */
+    .services {
+      background: var(--color-bg-white);
+    }
+
+    .services__header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .services__header .section-subtitle {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .services__grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+    }
+
+    .service-card {
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      padding: 28px 20px;
+      text-align: center;
+      transition: box-shadow var(--transition), transform var(--transition), background var(--transition), border-color var(--transition);
+    }
+
+    .service-card:hover {
+      background: var(--color-bg-white);
+      box-shadow: var(--shadow-card);
+      transform: translateY(-3px);
+      border-color: rgba(139, 90, 43, 0.18);
+    }
+
+    .service-card__icon {
+      font-size: 28px;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .service-card__title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--color-text);
+      line-height: 1.4;
+    }
+
+    /* ─────────────────────────────────────────────
+       RESULTS
+    ───────────────────────────────────────────── */
+    .results {
+      background: var(--color-bg);
+    }
+
+    .results__header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .results__header .section-subtitle {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .results__grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .result-card {
+      background: var(--color-bg-white);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      padding: 36px 32px;
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
+    }
+
+    .result-card:hover {
+      box-shadow: var(--shadow-card-hover);
+      transform: translateY(-3px);
+      border-color: rgba(139, 90, 43, 0.16);
+    }
+
+    .result-card__num {
+      font-family: var(--font-heading);
+      font-size: 48px;
+      font-weight: 700;
+      line-height: 1;
+      background: var(--gradient-heading);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      flex-shrink: 0;
+      min-width: 56px;
+    }
+
+    .result-card__body {}
+
+    .result-card__title {
+      font-family: var(--font-heading);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--color-text);
+      margin-bottom: 8px;
+    }
+
+    .result-card__text {
+      font-size: 14px;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+    }
+
+    /* ─────────────────────────────────────────────
+       TRUST BAR
+    ───────────────────────────────────────────── */
+    .trust-bar {
+      background: var(--color-bg-white);
+      border-top: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--color-border);
+      padding: 36px 0;
+    }
+
+    .trust-bar__inner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--color-text-muted);
+      padding: 10px 20px;
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: 50px;
+    }
+
+    .trust-item__check {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--gradient-cta);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* ─────────────────────────────────────────────
+       FINAL CTA
+    ───────────────────────────────────────────── */
+    .final-cta {
+      background: linear-gradient(145deg, #3a2106 0%, #5c3a1e 40%, #8B5A2B 100%);
+      padding: 100px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .final-cta::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(196, 154, 108, 0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .final-cta__content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .final-cta__label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .final-cta__title {
+      font-family: var(--font-heading);
+      font-size: clamp(30px, 5vw, 50px);
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .final-cta__subtitle {
+      font-size: 16px;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 44px;
+      max-width: 460px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+    }
+
+    .btn-light {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: #fff;
+      color: var(--color-accent-dark);
+      font-family: var(--font-body);
+      font-size: 16px;
+      font-weight: 700;
+      padding: 18px 44px;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+      margin-bottom: 32px;
+    }
+
+    .btn-light:hover {
+      background: #fdf8f3;
+      transform: translateY(-2px);
+      box-shadow: 0 14px 44px rgba(0, 0, 0, 0.32);
+    }
+
+    .final-cta__contacts {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .final-cta__contact {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.72);
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+
+    .final-cta__contact:hover {
+      color: #fff;
+    }
+
+    .final-cta__contact-icon {
+      font-size: 16px;
+    }
+
+    .final-cta__sep {
+      color: rgba(255,255,255,0.2);
+      font-size: 18px;
+    }
+
+    /* ─────────────────────────────────────────────
+       FOOTER
+    ───────────────────────────────────────────── */
+    .footer {
+      background: #1e0e04;
+      padding: 28px 0;
+    }
+
+    .footer__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer__logo {
+      font-family: var(--font-heading);
+      font-size: 16px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+    }
+
+    .footer__copy {
+      font-size: 12px;
+      color: rgba(255,255,255,0.28);
+    }
+
+    /* ─────────────────────────────────────────────
+       RESPONSIVE
+    ───────────────────────────────────────────── */
+    @media (max-width: 960px) {
+      .advantages__grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .adv-card {
+        padding: 32px 24px;
+      }
+
+      .services__grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+      }
+
+      .for-whom__grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .transform__grid {
+        grid-template-columns: 1fr;
+      }
+
+      .transform__divider {
+        width: 100%;
+        height: 56px;
+        border-top: 1px solid var(--color-border);
+        border-bottom: 1px solid var(--color-border);
+        border-left: none;
+        border-right: none;
+        flex-direction: row;
+      }
+
+      .transform__arrow {
+        transform: rotate(90deg);
+      }
+    }
+
+    @media (max-width: 720px) {
+      .section {
+        padding: 64px 0;
+      }
+
+      .hero {
+        padding: 130px 0 72px;
+      }
+
+      .results__grid {
+        grid-template-columns: 1fr;
+      }
+
+      .services__grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .nav__cta {
+        font-size: 12px;
+        padding: 8px 16px;
+      }
+
+      .for-whom__stat {
+        gap: 20px;
+      }
+
+      .final-cta {
+        padding: 72px 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero__badges {
+        gap: 8px;
+      }
+
+      .badge {
+        font-size: 12px;
+        padding: 7px 12px;
+      }
+
+      .btn-primary {
+        width: 100%;
+        font-size: 15px;
+        padding: 16px 28px;
+      }
+
+      .services__grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .result-card {
+        flex-direction: column;
+        gap: 12px;
+        padding: 28px 24px;
+      }
+
+      .result-card__num {
+        font-size: 36px;
+        min-width: unset;
+      }
+
+      .for-whom__visual {
+        padding: 36px 28px;
+      }
+
+      .transform__panel {
+        padding: 36px 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="nav" id="nav">
+    <div class="container">
+      <div class="nav__inner">
+        <a href="#" class="nav__logo">Эстет<span>Групп</span></a>
+        <a href="#cta" class="nav__cta">Рассчитать стоимость</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero__content">
+        <span class="hero__eyebrow">Москва и Московская область</span>
+        <h1 class="hero__title">
+          Тёплый балкон<br />
+          <span class="gradient-text">под ключ</span><br />
+          в Москве и МО
+        </h1>
+        <p class="hero__subtitle">
+          Остекление, утепление и отделка с гарантией и фиксированной ценой.
+          Бесплатный замер и точная смета до начала работ. Без скрытых доплат.
+        </p>
+        <div class="hero__badges">
+          <span class="badge"><span class="badge__dot"></span>Бесплатный замер</span>
+          <span class="badge"><span class="badge__dot"></span>Работа под ключ</span>
+          <span class="badge"><span class="badge__dot"></span>Комфорт круглый год</span>
+        </div>
+        <div class="hero__actions">
+          <a href="#cta" class="btn-primary">Рассчитать стоимость балкона</a>
+          <span class="hero__micro">Ответим и рассчитаем стоимость</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar reveal">
+    <div class="container">
+      <div class="trust-bar__inner">
+        <div class="trust-item"><span class="trust-item__check">✓</span>Бесплатный выезд замерщика</div>
+        <div class="trust-item"><span class="trust-item__check">✓</span>Работа под ключ</div>
+        <div class="trust-item"><span class="trust-item__check">✓</span>Гарантия на работы</div>
+        <div class="trust-item"><span class="trust-item__check">✓</span>Фиксированная цена по договору</div>
+        <div class="trust-item"><span class="trust-item__check">✓</span>Балкон пригоден круглый год</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROBLEM → SOLUTION -->
+  <section class="section transform">
+    <div class="container">
+      <div class="reveal">
+        <span class="section-label">Трансформация</span>
+        <h2 class="section-title">От холодного угла<br />к <span class="gradient-text">полноценному пространству</span></h2>
+      </div>
+      <div class="transform__grid reveal reveal--delay-2">
+        <div class="transform__panel transform__panel--problem">
+          <span class="transform__tag">Было</span>
+          <h3 class="transform__panel-title">Холодный и бесполезный балкон</h3>
+          <ul class="transform__list">
+            <li data-icon="❄️">Промерзает зимой, невозможно использовать</li>
+            <li data-icon="🔊">Уличный шум проникает в квартиру</li>
+            <li data-icon="💸">Тепло уходит через щели и тонкие стёкла</li>
+            <li data-icon="📦">Захламлённое хранилище без ценности</li>
+          </ul>
+        </div>
+        <div class="transform__divider">
+          <div class="transform__arrow">→</div>
+        </div>
+        <div class="transform__panel transform__panel--solution">
+          <span class="transform__tag">Стало</span>
+          <h3 class="transform__panel-title" style="color:#fff;">Готовая жилая зона под ключ</h3>
+          <ul class="transform__list">
+            <li data-icon="☀️">Тепло и уютно в любое время года</li>
+            <li data-icon="🔇">Надёжная шумоизоляция — тишина дома</li>
+            <li data-icon="🏡">Дополнительные квадратные метры жилья</li>
+            <li data-icon="📈">Повышение рыночной стоимости квартиры</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ADVANTAGES -->
+  <section class="section advantages">
+    <div class="container">
+      <div class="advantages__header reveal">
+        <span class="section-label">Почему нас выбирают</span>
+        <h2 class="section-title">Три причины доверить<br />нам свой балкон</h2>
+        <p class="section-subtitle">Мы берём на себя весь цикл работ — от замера до финальной уборки после монтажа.</p>
+      </div>
+      <div class="advantages__grid">
+        <div class="adv-card reveal reveal--delay-1">
+          <div class="adv-card__icon">📐</div>
+          <h3 class="adv-card__title">Бесплатный замер и точная смета</h3>
+          <p class="adv-card__text">Выезжаем в удобное для вас время. Замерщик составит точную смету на месте — никаких сюрпризов по цене в процессе работ.</p>
+        </div>
+        <div class="adv-card reveal reveal--delay-2">
+          <div class="adv-card__icon">🏠</div>
+          <h3 class="adv-card__title">Тёплое остекление и утепление</h3>
+          <p class="adv-card__text">Профессиональное утепление пола, стен и потолка. Тёплые стеклопакеты. Балкон превращается в полноценную жилую зону.</p>
+        </div>
+        <div class="adv-card reveal reveal--delay-3">
+          <div class="adv-card__icon">📋</div>
+          <h3 class="adv-card__title">Фиксированная цена и гарантия</h3>
+          <p class="adv-card__text">Стоимость закреплена в договоре и не меняется. Гарантия на все виды работ. Платите ровно столько, сколько обговорили.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOR WHOM -->
+  <section class="section for-whom">
+    <div class="container">
+      <div class="for-whom__grid">
+        <div>
+          <div class="reveal">
+            <span class="section-label">Для кого подходит</span>
+            <h2 class="section-title">Подойдёт для<br /><span class="gradient-text">любого жилья</span></h2>
+            <p class="section-subtitle" style="margin-bottom:36px;">Работаем как в новостройках, так и в домах старого фонда. Решения под любые задачи и бюджеты.</p>
+          </div>
+          <div class="for-whom__list">
+            <div class="for-whom__item reveal reveal--delay-1">
+              <span class="for-whom__item-icon">🏢</span>
+              <span class="for-whom__item-text">Владельцы квартир в многоэтажках</span>
+            </div>
+            <div class="for-whom__item reveal reveal--delay-2">
+              <span class="for-whom__item-icon">🆕</span>
+              <span class="for-whom__item-text">Новостройки — чистовой ремонт балкона</span>
+            </div>
+            <div class="for-whom__item reveal reveal--delay-3">
+              <span class="for-whom__item-icon">🏠</span>
+              <span class="for-whom__item-text">Вторичное жильё — обновление и утепление</span>
+            </div>
+            <div class="for-whom__item reveal reveal--delay-4">
+              <span class="for-whom__item-icon">💼</span>
+              <span class="for-whom__item-text">Для кабинета, зоны отдыха или хранения</span>
+            </div>
+          </div>
+        </div>
+        <div class="for-whom__visual reveal reveal--delay-2">
+          <h3 class="for-whom__visual-title">Полностью готовый балкон за фиксированную цену</h3>
+          <p class="for-whom__visual-text">Приходим, замеряем, согласовываем смету. Вы подписываете договор с фиксированной ценой и датами. Мы делаем всё остальное — до финального результата.</p>
+          <div class="for-whom__stat">
+            <div class="stat">
+              <span class="stat__num">100%</span>
+              <span class="stat__label">Под ключ</span>
+            </div>
+            <div class="stat">
+              <span class="stat__num">0₽</span>
+              <span class="stat__label">За замер</span>
+            </div>
+            <div class="stat">
+              <span class="stat__num">12</span>
+              <span class="stat__label">Мес. гарантии</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES INCLUDED -->
+  <section class="section services">
+    <div class="container">
+      <div class="services__header reveal">
+        <span class="section-label">Состав работ</span>
+        <h2 class="section-title">Что входит в работу</h2>
+        <p class="section-subtitle">Полный цикл — от демонтажа до финишной отделки. Один подрядчик, один договор.</p>
+      </div>
+      <div class="services__grid">
+        <div class="service-card reveal reveal--delay-1">
+          <span class="service-card__icon">🪟</span>
+          <span class="service-card__title">Остекление тёплыми стеклопакетами</span>
+        </div>
+        <div class="service-card reveal reveal--delay-2">
+          <span class="service-card__icon">🌡️</span>
+          <span class="service-card__title">Утепление пола, стен и потолка</span>
+        </div>
+        <div class="service-card reveal reveal--delay-3">
+          <span class="service-card__icon">🎨</span>
+          <span class="service-card__title">Внутренняя отделка — панели, вагонка</span>
+        </div>
+        <div class="service-card reveal reveal--delay-4">
+          <span class="service-card__icon">💡</span>
+          <span class="service-card__title">Подготовка под освещение</span>
+        </div>
+        <div class="service-card reveal reveal--delay-5">
+          <span class="service-card__icon">✅</span>
+          <span class="service-card__title">Уборка и сдача объекта</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTS -->
+  <section class="section results">
+    <div class="container">
+      <div class="results__header reveal">
+        <span class="section-label">Результат для вас</span>
+        <h2 class="section-title">Что вы получаете<br /><span class="gradient-text">в итоге</span></h2>
+        <p class="section-subtitle">Не просто отремонтированный балкон — а новое пространство, которое работает на вас каждый день.</p>
+      </div>
+      <div class="results__grid">
+        <div class="result-card reveal reveal--delay-1">
+          <span class="result-card__num">01</span>
+          <div class="result-card__body">
+            <h3 class="result-card__title">Дополнительная жилая площадь</h3>
+            <p class="result-card__text">Балкон превращается в полноценную комнату: кабинет, зону отдыха, место для занятий или хранения.</p>
+          </div>
+        </div>
+        <div class="result-card reveal reveal--delay-2">
+          <span class="result-card__num">02</span>
+          <div class="result-card__body">
+            <h3 class="result-card__title">Тепло и шумоизоляция</h3>
+            <p class="result-card__text">Зимой тепло, летом прохладно. Уличный шум остаётся снаружи — дома всегда тихо и комфортно.</p>
+          </div>
+        </div>
+        <div class="result-card reveal reveal--delay-3">
+          <span class="result-card__num">03</span>
+          <div class="result-card__body">
+            <h3 class="result-card__title">Повышение стоимости квартиры</h3>
+            <p class="result-card__text">Качественно отделанный балкон увеличивает рыночную привлекательность и цену квартиры при продаже.</p>
+          </div>
+        </div>
+        <div class="result-card reveal reveal--delay-4">
+          <span class="result-card__num">04</span>
+          <div class="result-card__body">
+            <h3 class="result-card__title">Комфорт круглый год</h3>
+            <p class="result-card__text">Используйте балкон в любое время года без сезонных ограничений — он готов к эксплуатации 365 дней.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta" id="cta">
+    <div class="container">
+      <div class="final-cta__content reveal">
+        <span class="final-cta__label">Бесплатно и без обязательств</span>
+        <h2 class="final-cta__title">Получите расчёт<br />стоимости бесплатно</h2>
+        <p class="final-cta__subtitle">Оставьте заявку — перезвоним в течение 30 минут и рассчитаем точную стоимость для вашего балкона.</p>
+        <a href="tel:+74951234567" class="btn-light">Получить расчёт</a>
+        <div class="final-cta__contacts">
+          <a href="tel:+74951234567" class="final-cta__contact">
+            <span class="final-cta__contact-icon">📞</span>
+            +7 (495) 123-45-67
+          </a>
+          <span class="final-cta__sep">·</span>
+          <a href="https://estet-grupp.ru" class="final-cta__contact" target="_blank" rel="noopener">
+            <span class="final-cta__contact-icon">🌐</span>
+            estet-grupp.ru
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <a href="#" class="footer__logo">Эстет Групп</a>
+        <span class="footer__copy">© 2025 Компания «Эстет Групп». Москва и Московская область.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Sticky nav shadow on scroll
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+    }, { passive: true });
+
+    // IntersectionObserver for reveal animations
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+    );
+
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener('click', (e) => {
+        const target = document.querySelector(anchor.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
