@@ -978,6 +978,87 @@
     }
 
     /* ─────────────────────────────────────────────
+       REVIEWS
+    ───────────────────────────────────────────── */
+    .reviews {
+      background: var(--color-bg);
+    }
+
+    .reviews__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .review-card {
+      background: var(--color-card);
+      border-radius: 20px;
+      padding: 32px 28px;
+      border: 1px solid var(--color-border);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transition: box-shadow var(--transition), transform var(--transition);
+    }
+
+    .review-card:hover {
+      box-shadow: 0 8px 32px rgba(70, 41, 8, 0.08);
+      transform: translateY(-2px);
+    }
+
+    .review-card__stars {
+      display: flex;
+      gap: 3px;
+      color: #F59E0B;
+      font-size: 16px;
+      line-height: 1;
+    }
+
+    .review-card__text {
+      font-size: 15px;
+      line-height: 1.65;
+      color: var(--color-text);
+      flex: 1;
+    }
+
+    .review-card__text::before {
+      content: '«';
+      color: var(--color-accent);
+      font-weight: 700;
+    }
+
+    .review-card__text::after {
+      content: '»';
+      color: var(--color-accent);
+      font-weight: 700;
+    }
+
+    .review-card__author {
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--color-text);
+    }
+
+    .review-card__source {
+      font-size: 12px;
+      color: var(--color-text-muted);
+      margin-top: -8px;
+    }
+
+    @media (max-width: 960px) {
+      .reviews__grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .reviews__grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ─────────────────────────────────────────────
        RESULTS
     ───────────────────────────────────────────── */
     .results {
@@ -1088,6 +1169,91 @@
       font-size: 10px;
       font-weight: 700;
       flex-shrink: 0;
+    }
+
+    /* ─────────────────────────────────────────────
+       FAQ
+    ───────────────────────────────────────────── */
+    .faq {
+      background: var(--color-card);
+    }
+
+    .faq__list {
+      margin-top: 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .faq-item {
+      background: var(--color-bg);
+      border-radius: 16px;
+      border: 1px solid var(--color-border);
+      overflow: hidden;
+      transition: box-shadow var(--transition);
+    }
+
+    .faq-item.is-open {
+      box-shadow: 0 4px 20px rgba(70, 41, 8, 0.08);
+    }
+
+    .faq-item__question {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 22px 28px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      font-family: var(--font-body);
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--color-text);
+      transition: color var(--transition);
+    }
+
+    .faq-item__question:hover {
+      color: var(--color-accent);
+    }
+
+    .faq-item__icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--gradient-cta);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      line-height: 1;
+      flex-shrink: 0;
+      transition: transform var(--transition);
+    }
+
+    .faq-item.is-open .faq-item__icon {
+      transform: rotate(45deg);
+    }
+
+    .faq-item__answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+      padding: 0 28px;
+    }
+
+    .faq-item.is-open .faq-item__answer {
+      max-height: 400px;
+      padding: 0 28px 22px;
+    }
+
+    .faq-item__answer p {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--color-text-muted);
     }
 
     /* ─────────────────────────────────────────────
@@ -1947,6 +2113,62 @@
     </div>
   </section>
 
+  <!-- REVIEWS -->
+  <section class="section reviews">
+    <div class="container">
+      <div class="reveal">
+        <span class="section-label">Отзывы</span>
+        <h2 class="section-title">Что говорят наши клиенты</h2>
+        <p class="section-subtitle">Реальные отзывы с Авито и Яндекс.Карт</p>
+      </div>
+      <div class="reviews__grid">
+
+        <div class="review-card reveal reveal--delay-1">
+          <div class="review-card__stars">★★★★★</div>
+          <p class="review-card__text">Заказывал отделку балкона и лоджии с небольшим утеплением. Эмоции после ремонта только положительные. Постарались ребята на 100% — убирали каждый день стружку и пыль, по окончании весь мусор вывезли.</p>
+          <div class="review-card__author">Дмитрий Иванов</div>
+          <div class="review-card__source">Яндекс.Карты</div>
+        </div>
+
+        <div class="review-card reveal reveal--delay-2">
+          <div class="review-card__stars">★★★★★</div>
+          <p class="review-card__text">Решающий момент — фиксированный чёткий прайс на все виды работ. Быстро приехали на замеры, помогли определиться с отделкой. Сразу после замеров названа итоговая сумма и подписан договор.</p>
+          <div class="review-card__author">Анастасия</div>
+          <div class="review-card__source">Авито</div>
+        </div>
+
+        <div class="review-card reveal reveal--delay-3">
+          <div class="review-card__stars">★★★★★</div>
+          <p class="review-card__text">Хочу выразить благодарность Роману и Сергею. Сказать, что мы в восторге — ничего не сказать. Приехали на замер, сразу составили договор. После работы балкон стал очень уютным.</p>
+          <div class="review-card__author">Никита</div>
+          <div class="review-card__source">Яндекс.Карты · Эстет Групп</div>
+        </div>
+
+        <div class="review-card reveal reveal--delay-1">
+          <div class="review-card__stars">★★★★★</div>
+          <p class="review-card__text">Очень ответственные рабочие, всё сделали в срок и качественно. Несколько раз переделывали конструкцию по нашей инициативе — лишних денег не взяли, всё на совесть. Рекомендую!</p>
+          <div class="review-card__author">Юлия</div>
+          <div class="review-card__source">Авито</div>
+        </div>
+
+        <div class="review-card reveal reveal--delay-2">
+          <div class="review-card__stars">★★★★★</div>
+          <p class="review-card__text">Все работы выполнены точно в срок. Роман приехал вовремя, сделал замеры, помог выбрать материалы. Монтаж и отделка заняли 2,5 дня. Всё аккуратно, материалы качественные, подсветка идеальна. Буду всем советовать.</p>
+          <div class="review-card__author">Ольга</div>
+          <div class="review-card__source">Яндекс.Карты</div>
+        </div>
+
+        <div class="review-card reveal reveal--delay-3">
+          <div class="review-card__stars">★★★★★</div>
+          <p class="review-card__text">Делали 2 балкона — уложились за 4 дня. Работа полностью под ключ: остекление и отделка. Результат нравится. Удивительно, что минусов нет — работали в ускоренном режиме. Спасибо!</p>
+          <div class="review-card__author">Варвара Лакеенкова</div>
+          <div class="review-card__source">Авито</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- RESULTS -->
   <section class="section results">
     <div class="container">
@@ -1984,6 +2206,90 @@
             <p class="result-card__text">Используйте балкон в любое время года без сезонных ограничений — он готов к эксплуатации 365 дней.</p>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section faq">
+    <div class="container">
+      <div class="reveal">
+        <span class="section-label">Вопросы и ответы</span>
+        <h2 class="section-title">Часто спрашивают</h2>
+        <p class="section-subtitle">Отвечаем на вопросы, которые возникают до звонка</p>
+      </div>
+      <div class="faq__list">
+
+        <div class="faq-item reveal">
+          <button class="faq-item__question" aria-expanded="false">
+            Нужно ли разрешение на остекление балкона?
+            <span class="faq-item__icon">+</span>
+          </button>
+          <div class="faq-item__answer">
+            <p>В большинстве случаев — нет. Замена старого остекления на новое или остекление уже имеющегося балкона не требует согласований. Разрешение нужно только если вы планируете присоединить балкон к комнате или изменить внешний вид фасада. Мы подскажем на замере, нужна ли в вашем случае согласование.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal">
+          <button class="faq-item__question" aria-expanded="false">
+            Сколько времени занимает монтаж?
+            <span class="faq-item__icon">+</span>
+          </button>
+          <div class="faq-item__answer">
+            <p>Монтаж занимает от 1 до 4 дней в зависимости от объёма и сложности работ. Стандартный балкон с остеклением и отделкой — 2–3 дня. Точные сроки указываем в договоре и строго их соблюдаем.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal">
+          <button class="faq-item__question" aria-expanded="false">
+            Можно ли жить в квартире во время ремонта?
+            <span class="faq-item__icon">+</span>
+          </button>
+          <div class="faq-item__answer">
+            <p>Да, все работы проходят на балконе и не мешают жизни в квартире. Мастера убирают строительный мусор каждый день, по окончании вывозят всё — вы получаете чистый готовый балкон.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal">
+          <button class="faq-item__question" aria-expanded="false">
+            Что если что-то сломается после сдачи?
+            <span class="faq-item__icon">+</span>
+          </button>
+          <div class="faq-item__answer">
+            <p>На все виды работ — гарантия 5 лет. Если в гарантийный период что-то выйдет из строя по нашей вине, приедем и устраним бесплатно. Условия гарантии прописаны в договоре.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal">
+          <button class="faq-item__question" aria-expanded="false">
+            Можно ли оплатить в рассрочку?
+            <span class="faq-item__icon">+</span>
+          </button>
+          <div class="faq-item__answer">
+            <p>Да. Мы предлагаем рассрочку 0% на 6 месяцев — без переплат и банков, от компании. Для начала работ достаточно внести всего 10% предоплаты. Остаток оплачиваете после сдачи готового балкона.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal">
+          <button class="faq-item__question" aria-expanded="false">
+            Вы работаете в выходные?
+            <span class="faq-item__icon">+</span>
+          </button>
+          <div class="faq-item__answer">
+            <p>Да, работаем без выходных. Замер можно назначить в любой день, включая субботу и воскресенье — в удобное для вас время.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal">
+          <button class="faq-item__question" aria-expanded="false">
+            Как формируется итоговая цена?
+            <span class="faq-item__icon">+</span>
+          </button>
+          <div class="faq-item__answer">
+            <p>Цена зависит от площади балкона, типа остекления и состава работ. На замере замерщик точно всё посчитает и назовёт финальную сумму. Эта сумма фиксируется в договоре и не меняется — никаких доплат в процессе.</p>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -2148,6 +2454,22 @@
         if (target) {
           e.preventDefault();
           target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-item__question').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('is-open');
+        document.querySelectorAll('.faq-item').forEach((el) => {
+          el.classList.remove('is-open');
+          el.querySelector('.faq-item__question').setAttribute('aria-expanded', 'false');
+        });
+        if (!isOpen) {
+          item.classList.add('is-open');
+          btn.setAttribute('aria-expanded', 'true');
         }
       });
     });
