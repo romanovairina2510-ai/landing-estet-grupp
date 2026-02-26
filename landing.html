@@ -978,6 +978,65 @@
     }
 
     /* ─────────────────────────────────────────────
+       GALLERY
+    ───────────────────────────────────────────── */
+    .gallery {
+      background: var(--color-card);
+    }
+
+    .gallery__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 48px;
+    }
+
+    .gallery__item {
+      border-radius: 16px;
+      overflow: hidden;
+      aspect-ratio: 3 / 4;
+      background: var(--color-border);
+    }
+
+    .gallery__item:first-child {
+      grid-column: span 2;
+      aspect-ratio: 16 / 10;
+    }
+
+    .gallery__item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery__item:hover img {
+      transform: scale(1.04);
+    }
+
+    @media (max-width: 720px) {
+      .gallery__grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .gallery__item:first-child {
+        grid-column: span 2;
+        aspect-ratio: 4 / 3;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .gallery__grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery__item:first-child {
+        grid-column: span 1;
+      }
+    }
+
+    /* ─────────────────────────────────────────────
        REVIEWS
     ───────────────────────────────────────────── */
     .reviews {
@@ -1838,10 +1897,8 @@
           </div>
         </div>
         <div class="hero__visual">
-          <!-- Заменить содержимое .hero__photo на <img src="фото.jpg" alt="Балкон до и после" /> когда появится фото -->
           <div class="hero__photo">
-            <span class="hero__photo-icon">🏠</span>
-            <span class="hero__photo-caption">Фото балкона</span>
+            <img src="img/IMG_9691.JPG" alt="Готовый балкон с деревянной отделкой — работа Эстет Групп" />
           </div>
         </div>
       </div>
@@ -2108,6 +2165,37 @@
             <strong>Бесплатный выезд замерщика</strong>
             <span>Точная смета на месте, без обязательств</span>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="section gallery">
+    <div class="container">
+      <div class="reveal">
+        <span class="section-label">Наши работы</span>
+        <h2 class="section-title">Балконы, которые мы сделали</h2>
+        <p class="section-subtitle">Каждый проект — под характер и задачи хозяев</p>
+      </div>
+      <div class="gallery__grid">
+        <div class="gallery__item reveal">
+          <img src="img/IMG_9693.JPG" alt="Балкон-лоджия с рабочим местом и подсветкой" loading="lazy" decoding="async" />
+        </div>
+        <div class="gallery__item reveal reveal--delay-1">
+          <img src="img/IMG_9700.WEBP" alt="Уютный балкон с растениями и дизайнерским светильником" loading="lazy" decoding="async" />
+        </div>
+        <div class="gallery__item reveal reveal--delay-2">
+          <img src="img/IMG_9695.WEBP" alt="Балкон-кабинет с трековым освещением и видом на город" loading="lazy" decoding="async" />
+        </div>
+        <div class="gallery__item reveal reveal--delay-3">
+          <img src="img/IMG_9696.WEBP" alt="Балкон с дизайнерскими лампами и мягкой зоной" loading="lazy" decoding="async" />
+        </div>
+        <div class="gallery__item reveal reveal--delay-1">
+          <img src="img/IMG_9699.WEBP" alt="Панорамное остекление с диваном и видом на город" loading="lazy" decoding="async" />
+        </div>
+        <div class="gallery__item reveal reveal--delay-2">
+          <img src="img/IMG_9697.WEBP" alt="Панорамное остекление с тюлью и зоной отдыха" loading="lazy" decoding="async" />
         </div>
       </div>
     </div>
