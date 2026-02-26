@@ -616,6 +616,11 @@
       border: 1px solid var(--color-border);
       border-radius: var(--radius);
       padding: 40px 32px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
       transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
     }
 
@@ -652,6 +657,7 @@
       font-size: 14px;
       color: var(--color-text-muted);
       line-height: 1.65;
+      max-width: 280px;
     }
 
     /* ─────────────────────────────────────────────
@@ -917,8 +923,12 @@
        PRICING
     ───────────────────────────────────────────── */
     .pricing {
-      background: var(--color-card);
+      background: linear-gradient(150deg, #2a1505 0%, #3d2009 55%, #281404 100%);
     }
+
+    .pricing .section-label { color: rgba(196, 154, 108, 0.85); }
+    .pricing .section-title { color: #fff; }
+    .pricing .section-subtitle { color: rgba(255, 255, 255, 0.6); }
 
     .pricing__grid {
       display: grid;
@@ -928,56 +938,73 @@
     }
 
     .price-card {
-      background: var(--color-bg);
+      background: #fff;
       border-radius: 20px;
       padding: 36px 28px;
-      border: 1px solid var(--color-border);
+      border: none;
       display: flex;
       flex-direction: column;
-      gap: 12px;
       transition: box-shadow var(--transition), transform var(--transition);
       position: relative;
+      overflow: hidden;
+    }
+
+    .price-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, transparent 0%, #8B5A2B 30%, #C49A6C 50%, #8B5A2B 70%, transparent 100%);
+      animation: price-line 2.8s ease-in-out infinite;
+    }
+
+    @keyframes price-line {
+      0%   { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
     }
 
     .price-card:hover {
-      box-shadow: 0 8px 32px rgba(70, 41, 8, 0.1);
-      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+      transform: translateY(-4px);
     }
 
     .price-card--featured {
       background: #fff;
-      border-color: transparent;
-      box-shadow: 0 4px 24px rgba(70, 41, 8, 0.14);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
     }
 
     .price-card__badge {
-      display: inline-block;
+      position: absolute;
+      top: 20px;
+      right: 20px;
       background: var(--gradient-cta);
       color: #fff;
       font-size: 11px;
       font-weight: 700;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       padding: 4px 12px;
       border-radius: 20px;
-      align-self: flex-start;
-      margin-bottom: 4px;
     }
 
     .price-card__type {
-      font-size: 15px;
-      font-weight: 600;
+      font-size: 12px;
+      font-weight: 700;
       color: var(--color-text-muted);
       text-transform: uppercase;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.1em;
+      margin-bottom: 16px;
     }
 
     .price-card__price {
       font-family: var(--font-heading);
-      font-size: clamp(28px, 3vw, 36px);
+      font-size: clamp(30px, 3vw, 38px);
       font-weight: 700;
       color: var(--color-text);
       line-height: 1;
+      margin-bottom: 20px;
     }
 
     .price-card__price span {
@@ -989,52 +1016,57 @@
     .price-card__desc {
       font-size: 14px;
       color: var(--color-text-muted);
-      line-height: 1.6;
-      margin-top: 4px;
+      line-height: 1.65;
+      flex: 1;
+      padding-top: 20px;
+      border-top: 1px solid var(--color-border);
     }
 
     .pricing__conditions {
-      display: flex;
-      gap: 32px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
       margin-top: 40px;
-      padding: 28px 32px;
-      background: var(--color-bg);
+      background: rgba(255, 255, 255, 0.08);
       border-radius: 16px;
-      border: 1px solid var(--color-border);
-      flex-wrap: wrap;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      overflow: hidden;
     }
 
     .pricing__condition {
       display: flex;
       align-items: center;
-      gap: 12px;
-      flex: 1;
-      min-width: 200px;
+      gap: 16px;
+      padding: 24px 28px;
+      background: rgba(255, 255, 255, 0.04);
     }
 
     .pricing__condition-icon {
       width: 44px;
       height: 44px;
       border-radius: 12px;
-      background: var(--gradient-cta);
+      background: rgba(196, 154, 108, 0.15);
+      border: 1px solid rgba(196, 154, 108, 0.25);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #fff;
+      color: #C49A6C;
       flex-shrink: 0;
     }
     .pricing__condition-icon svg { width: 22px; height: 22px; }
 
     .pricing__condition strong {
       display: block;
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 700;
-      color: var(--color-text);
+      color: #fff;
+      margin-bottom: 3px;
     }
 
     .pricing__condition span {
       font-size: 13px;
-      color: var(--color-text-muted);
+      color: rgba(255, 255, 255, 0.55);
+      line-height: 1.4;
     }
 
     @media (max-width: 960px) {
@@ -1044,13 +1076,9 @@
         margin-left: auto;
         margin-right: auto;
       }
-    }
 
-    @media (max-width: 600px) {
       .pricing__conditions {
-        flex-direction: column;
-        gap: 20px;
-        padding: 24px 20px;
+        grid-template-columns: 1fr;
       }
     }
 
@@ -1283,44 +1311,45 @@
     }
 
     .trust-bar__inner {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-      gap: 0;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 8px;
     }
 
     .trust-item {
       display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 10px;
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--color-text);
-      padding: 8px 28px;
-      position: relative;
-      letter-spacing: 0.03em;
-      text-transform: uppercase;
-    }
-
-    .trust-item + .trust-item::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 1px;
-      height: 20px;
-      background: var(--color-border);
+      text-align: center;
+      padding: 24px 12px;
+      gap: 0;
     }
 
     .trust-item__check {
-      flex-shrink: 0;
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: rgba(139, 90, 43, 0.08);
+      border: 1px solid rgba(139, 90, 43, 0.15);
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 20px;
-      height: 20px;
+      margin-bottom: 14px;
+      flex-shrink: 0;
+    }
+
+    .trust-item__check svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    .trust-item__label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--color-text);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      line-height: 1.4;
     }
 
     /* ─────────────────────────────────────────────
@@ -1529,28 +1558,125 @@
     ───────────────────────────────────────────── */
     .footer {
       background: #1e0e04;
-      padding: 28px 0;
+      padding: 52px 0 28px;
     }
 
-    .footer__inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
+    .footer__main {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 36px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+      margin-bottom: 24px;
     }
 
     .footer__logo {
       font-family: var(--font-heading);
-      font-size: 16px;
+      font-size: 20px;
       font-weight: 700;
-      color: rgba(255,255,255,0.7);
+      color: rgba(255, 255, 255, 0.85);
       text-decoration: none;
+      display: block;
+      margin-bottom: 20px;
+      letter-spacing: 0.02em;
+    }
+
+    .footer__details {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .footer__detail {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.4);
+      line-height: 1.5;
+    }
+
+    .footer__detail a {
+      color: rgba(255, 255, 255, 0.4);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+
+    .footer__detail a:hover { color: #C49A6C; }
+
+    .footer__right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .footer__social {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: flex-end;
+    }
+
+    .footer__social-link {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      border: 1px solid rgba(139, 90, 43, 0.35);
+      background: rgba(139, 90, 43, 0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #8B5A2B;
+      text-decoration: none;
+      transition: color var(--transition), border-color var(--transition), background var(--transition);
+    }
+
+    .footer__social-link:hover {
+      color: #C49A6C;
+      border-color: rgba(196, 154, 108, 0.5);
+      background: rgba(196, 154, 108, 0.1);
+    }
+
+    .footer__social-link svg { display: block; }
+
+    .footer__policy {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.3);
+      text-decoration: none;
+      text-align: right;
+      line-height: 1.5;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+      padding-bottom: 1px;
+      transition: color var(--transition);
+    }
+
+    .footer__policy:hover { color: #C49A6C; }
+
+    .footer__bottom {
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .footer__copy {
       font-size: 12px;
-      color: rgba(255,255,255,0.28);
+      color: rgba(255, 255, 255, 0.2);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 720px) {
+      .footer__main {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .footer__right {
+        align-items: flex-start;
+      }
+
+      .footer__social { justify-content: flex-start; }
+
+      .footer__policy { text-align: left; }
     }
 
     /* ─────────────────────────────────────────────
@@ -1830,6 +1956,10 @@
         grid-template-columns: 1fr;
       }
 
+      .trust-bar__inner {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
       .how-it-works__steps {
         grid-template-columns: 1fr;
         gap: 0;
@@ -1911,12 +2041,15 @@
       }
 
       .trust-bar__inner {
-        gap: 0;
-        row-gap: 6px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
       }
 
       .trust-item {
-        padding: 6px 16px;
+        padding: 18px 8px;
+      }
+
+      .trust-item__label {
         font-size: 11px;
       }
 
@@ -2013,55 +2146,61 @@
       <div class="trust-bar__inner">
         <div class="trust-item">
           <span class="trust-item__check">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#8B5A2B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <svg width="24" height="24" viewBox="0 0 20 20" fill="none" stroke="#8B5A2B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <rect x="2" y="7" width="16" height="6" rx="1.5"/>
               <line x1="5" y1="7" x2="5" y2="10.5"/><line x1="8" y1="7" x2="8" y2="9"/><line x1="11" y1="7" x2="11" y2="10.5"/><line x1="14" y1="7" x2="14" y2="9"/>
             </svg>
-          </span>Бесплатный выезд замерщика
+          </span>
+          <span class="trust-item__label">Бесплатный выезд замерщика</span>
         </div>
         <div class="trust-item">
           <span class="trust-item__check">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#8B5A2B" stroke-width="1.5" stroke-linecap="round">
+            <svg width="24" height="24" viewBox="0 0 20 20" fill="none" stroke="#8B5A2B" stroke-width="1.5" stroke-linecap="round">
               <circle cx="7" cy="10" r="4"/>
               <line x1="10.5" y1="10" x2="18" y2="10"/><line x1="15.5" y1="10" x2="15.5" y2="12.5"/><line x1="13" y1="10" x2="13" y2="13"/>
             </svg>
-          </span>Работа под ключ
+          </span>
+          <span class="trust-item__label">Работа под ключ</span>
         </div>
         <div class="trust-item">
           <span class="trust-item__check">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#8B5A2B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <svg width="24" height="24" viewBox="0 0 20 20" fill="none" stroke="#8B5A2B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <path d="M10 2L3 5.5V10c0 3.5 3 6.5 7 8 4-1.5 7-4.5 7-8V5.5L10 2z"/>
               <polyline points="7,10 9,12 13,8"/>
             </svg>
-          </span>Гарантия 5 лет
+          </span>
+          <span class="trust-item__label">Гарантия 5 лет</span>
         </div>
         <div class="trust-item">
           <span class="trust-item__check">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#8B5A2B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <svg width="24" height="24" viewBox="0 0 20 20" fill="none" stroke="#8B5A2B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <path d="M4 2h8l4 4v12a1 1 0 01-1 1H4a1 1 0 01-1-1V3a1 1 0 011-1z"/>
               <polyline points="12,2 12,6 16,6"/>
               <line x1="7" y1="10" x2="13" y2="10"/><line x1="7" y1="13" x2="11" y2="13"/>
             </svg>
-          </span>Фиксированная цена по договору
+          </span>
+          <span class="trust-item__label">Фиксированная цена по договору</span>
         </div>
         <div class="trust-item">
           <span class="trust-item__check">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#8B5A2B" stroke-width="1.5" stroke-linecap="round">
+            <svg width="24" height="24" viewBox="0 0 20 20" fill="none" stroke="#8B5A2B" stroke-width="1.5" stroke-linecap="round">
               <line x1="10" y1="2" x2="10" y2="18"/>
               <line x1="2" y1="10" x2="18" y2="10"/>
               <line x1="5" y1="5" x2="15" y2="15"/>
               <line x1="15" y1="5" x2="5" y2="15"/>
             </svg>
-          </span>Балкон пригоден круглый год
+          </span>
+          <span class="trust-item__label">Балкон пригоден круглый год</span>
         </div>
         <div class="trust-item">
           <span class="trust-item__check">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#8B5A2B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <svg width="24" height="24" viewBox="0 0 20 20" fill="none" stroke="#8B5A2B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <rect x="1" y="6" width="13" height="10" rx="2"/>
               <circle cx="7.5" cy="11" r="2.5"/>
               <path d="M14 9.5l5-2v7l-5-2"/>
             </svg>
-          </span>Сдача объекта с тепловизором
+          </span>
+          <span class="trust-item__label">Сдача объекта с тепловизором</span>
         </div>
       </div>
     </div>
@@ -2217,15 +2356,15 @@
           <p class="for-whom__visual-text">Приходим, замеряем, согласовываем смету. Вы подписываете договор с фиксированной ценой и датами. Мы делаем всё остальное — до финального результата.</p>
           <div class="for-whom__stat">
             <div class="stat">
-              <span class="stat__num">12 534</span>
+              <span class="stat__num" data-target="12534" data-format="spaced">12 534</span>
               <span class="stat__label">Выполненных проекта</span>
             </div>
             <div class="stat">
-              <span class="stat__num">5 лет</span>
+              <span class="stat__num" data-target="5" data-suffix=" лет">5 лет</span>
               <span class="stat__label">Гарантия на работы</span>
             </div>
             <div class="stat">
-              <span class="stat__num">43</span>
+              <span class="stat__num" data-target="43">43</span>
               <span class="stat__label">Партнёра-поставщика</span>
             </div>
           </div>
@@ -2588,9 +2727,63 @@
   <!-- FOOTER -->
   <footer class="footer">
     <div class="container">
-      <div class="footer__inner">
-        <a href="#" class="footer__logo">Эстет Групп</a>
-        <span class="footer__copy">© 2026 Компания «Эстет Групп». Москва и Московская область.</span>
+      <div class="footer__main">
+
+        <!-- Левая колонка: контакты -->
+        <div class="footer__left">
+          <a href="#" class="footer__logo">Эстет Групп</a>
+          <div class="footer__details">
+            <span class="footer__detail">ИП Филенко Роман Эдуардович</span>
+            <span class="footer__detail">Москва, Каширское шоссе 1, стр. 12</span>
+            <span class="footer__detail"><a href="tel:+79039690322">+7 903 969-03-22</a></span>
+            <span class="footer__detail"><a href="tel:+74959690322">+7 495 969-03-22</a></span>
+            <span class="footer__detail">ИНН 575109317243</span>
+          </div>
+        </div>
+
+        <!-- Правая колонка: соцсети + политика -->
+        <div class="footer__right">
+          <div class="footer__social">
+
+            <!-- ВКонтакте -->
+            <a href="https://vk.ru/balkonestet" class="footer__social-link" aria-label="ВКонтакте" target="_blank" rel="noopener">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M15.684 0H8.316C1.592 0 0 1.592 0 8.316v7.368C0 22.408 1.592 24 8.316 24h7.368C22.408 24 24 22.408 24 15.684V8.316C24 1.592 22.408 0 15.684 0zm3.692 17h-1.744c-.66 0-.864-.525-2.05-1.715-.994-.992-1.43-.992-1.43 0 0 .387-.106.61-.66.61-1.196 0-2.525-.747-3.46-2.146C8.53 11.692 8.1 9.98 8.1 9.68c0-.302.107-.575.493-.575H10.3c.38 0 .524.175.66.575.72 2.082 1.926 3.908 2.416 3.908.185 0 .263-.084.263-.54V9.852c-.05-1.004-.587-1.088-.587-1.44 0-.21.175-.42.448-.42h2.758c.3 0 .407.16.407.524v2.814c0 .3.135.407.215.407.19 0 .362-.107.73-.48 1.124-1.26 1.924-3.196 1.924-3.196.108-.24.302-.468.694-.468h1.743c.538 0 .65.275.538.574-.23 1.07-2.46 4.215-2.46 4.215-.19.31-.257.45 0 .765.19.24.814.793 1.228 1.272.76.886 1.342 1.63 1.504 2.147.15.505-.11.762-.51.762z"/></svg>
+            </a>
+
+            <!-- Telegram -->
+            <a href="https://t.me/balkon_estet" class="footer__social-link" aria-label="Telegram" target="_blank" rel="noopener">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248-2.018 9.51c-.148.663-.537.825-1.084.513l-3-2.21-1.447 1.393c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L6.395 14.585l-2.97-.928c-.646-.202-.658-.646.135-.957l11.57-4.463c.538-.195 1.01.12.432.011z"/></svg>
+            </a>
+
+            <!-- Pinterest -->
+            <a href="#" class="footer__social-link" aria-label="Pinterest" target="_blank" rel="noopener">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-.1 2.09-.52 2.592.784.24 1.526.37 2.295.37C18.627 24 24 18.627 24 12S18.627 0 12 0z"/></svg>
+            </a>
+
+            <!-- Дзен -->
+            <a href="#" class="footer__social-link" aria-label="Дзен" target="_blank" rel="noopener">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm.5 19c0-3.59-2.91-6.5-6.5-6.5 3.59 0 6.5-2.91 6.5-6.5 0 3.59 2.91 6.5 6.5 6.5-3.59 0-6.5 2.91-6.5 6.5z"/></svg>
+            </a>
+
+            <!-- RuTube -->
+            <a href="#" class="footer__social-link" aria-label="RuTube" target="_blank" rel="noopener">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 3a7 7 0 1 1 0 14A7 7 0 0 1 12 5zm-2 3.5v7l6-3.5-6-3.5z"/></svg>
+            </a>
+
+            <!-- YouTube -->
+            <a href="#" class="footer__social-link" aria-label="YouTube" target="_blank" rel="noopener">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </a>
+
+          </div>
+          <a href="#" class="footer__policy">Политика обработки персональных данных</a>
+        </div>
+
+      </div>
+
+      <!-- Копирайт -->
+      <div class="footer__bottom">
+        <span class="footer__copy">© Эстет Групп 2018–2026</span>
       </div>
     </div>
   </footer>
@@ -2694,6 +2887,37 @@
         }
       });
     });
+
+    // Animated counters
+    function animateCounter(el) {
+      const target = parseInt(el.dataset.target, 10);
+      const suffix = el.dataset.suffix || '';
+      const spaced = el.dataset.format === 'spaced';
+      const duration = 1800;
+      const startTime = performance.now();
+
+      function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
+      function fmt(n) {
+        return spaced ? n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '\u00a0') : n.toString();
+      }
+
+      (function tick(now) {
+        const progress = Math.min((now - startTime) / duration, 1);
+        el.textContent = fmt(Math.round(easeOut(progress) * target)) + suffix;
+        if (progress < 1) requestAnimationFrame(tick);
+      })(startTime);
+    }
+
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          animateCounter(entry.target);
+          counterObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.6 });
+
+    document.querySelectorAll('.stat__num[data-target]').forEach((el) => counterObserver.observe(el));
 
     // FAQ accordion
     document.querySelectorAll('.faq-item__question').forEach((btn) => {
