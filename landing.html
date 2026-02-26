@@ -4,6 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Эстет Групп — Тёплый балкон под ключ в Москве и МО</title>
+  <meta name="description" content="Остекление, утепление и отделка балконов под ключ в Москве и МО. Бесплатный замер, фиксированная цена по договору, гарантия на работы." />
+  <meta property="og:title" content="Эстет Групп — Тёплый балкон под ключ" />
+  <meta property="og:description" content="Остекление и отделка балконов в Москве и МО. Бесплатный замер, фиксированная цена по договору." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Philosopher:wght@400;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -30,8 +35,8 @@
       --shadow-card-hover: 0 12px 40px rgba(70, 41, 8, 0.14);
       --radius: 16px;
       --radius-sm: 10px;
-      --font-heading: 'Philosopher', serif;
-      --font-body: 'Manrope', sans-serif;
+      --font-heading: 'Philosopher', Georgia, 'Times New Roman', serif;
+      --font-body: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       --transition: 0.35s ease;
     }
 
@@ -186,6 +191,26 @@
       box-shadow: 0 8px 24px rgba(139, 90, 43, 0.34);
     }
 
+    .nav__phone {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--color-text);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+      transition: color var(--transition);
+    }
+
+    .nav__phone:hover {
+      color: var(--color-accent);
+    }
+
+    .nav__phone-icon {
+      font-size: 15px;
+    }
+
     /* ─────────────────────────────────────────────
        HERO
     ───────────────────────────────────────────── */
@@ -218,10 +243,54 @@
       pointer-events: none;
     }
 
-    .hero__content {
+    .hero__inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
       position: relative;
       z-index: 1;
-      max-width: 760px;
+    }
+
+    .hero__content {
+      max-width: 560px;
+    }
+
+    .hero__visual {
+      opacity: 0;
+      animation: fadeSlideUp 0.6s ease 0.6s forwards;
+    }
+
+    .hero__photo {
+      border-radius: 24px;
+      overflow: hidden;
+      aspect-ratio: 4 / 3;
+      background: linear-gradient(135deg, rgba(139,90,43,0.06) 0%, rgba(196,154,108,0.13) 100%);
+      border: 2px dashed rgba(139,90,43,0.18);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .hero__photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero__photo-icon {
+      font-size: 52px;
+      opacity: 0.35;
+      line-height: 1;
+    }
+
+    .hero__photo-caption {
+      font-size: 13px;
+      color: var(--color-text-light);
+      letter-spacing: 0.04em;
     }
 
     .hero__eyebrow {
@@ -338,7 +407,7 @@
 
     .hero__micro {
       font-size: 12px;
-      color: var(--color-text-light);
+      color: var(--color-text-muted);
       display: flex;
       align-items: center;
       gap: 6px;
@@ -532,6 +601,96 @@
     }
 
     /* ─────────────────────────────────────────────
+       HOW IT WORKS
+    ───────────────────────────────────────────── */
+    .how-it-works__header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .how-it-works__header .section-subtitle {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .how-it-works__steps {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      position: relative;
+    }
+
+    .how-it-works__steps::before {
+      content: '';
+      position: absolute;
+      top: 27px;
+      left: 10%;
+      right: 10%;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(196, 154, 108, 0.2), rgba(139, 90, 43, 0.3), rgba(196, 154, 108, 0.2));
+      z-index: 0;
+    }
+
+    .step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0 10px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .step__circle {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--color-bg-white);
+      border: 2px solid var(--color-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--color-accent);
+      margin-bottom: 20px;
+      flex-shrink: 0;
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+
+    .step:hover .step__circle {
+      border-color: var(--color-accent-light);
+      box-shadow: 0 4px 16px rgba(139, 90, 43, 0.14);
+    }
+
+    .step__body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .step__icon {
+      font-size: 22px;
+      margin-bottom: 10px;
+      line-height: 1;
+    }
+
+    .step__title {
+      font-family: var(--font-heading);
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--color-text);
+      margin-bottom: 8px;
+      line-height: 1.35;
+    }
+
+    .step__text {
+      font-size: 13px;
+      color: var(--color-text-muted);
+      line-height: 1.55;
+    }
+
+    /* ─────────────────────────────────────────────
        FOR WHOM
     ───────────────────────────────────────────── */
     .for-whom {
@@ -683,6 +842,139 @@
       font-weight: 600;
       color: var(--color-text);
       line-height: 1.4;
+    }
+
+    /* ─────────────────────────────────────────────
+       PRICING
+    ───────────────────────────────────────────── */
+    .pricing {
+      background: var(--color-card);
+    }
+
+    .pricing__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .price-card {
+      background: var(--color-bg);
+      border-radius: 20px;
+      padding: 36px 28px;
+      border: 1px solid var(--color-border);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: box-shadow var(--transition), transform var(--transition);
+      position: relative;
+    }
+
+    .price-card:hover {
+      box-shadow: 0 8px 32px rgba(70, 41, 8, 0.1);
+      transform: translateY(-3px);
+    }
+
+    .price-card--featured {
+      background: #fff;
+      border-color: transparent;
+      box-shadow: 0 4px 24px rgba(139, 90, 43, 0.14);
+    }
+
+    .price-card__badge {
+      display: inline-block;
+      background: var(--gradient-cta);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+      align-self: flex-start;
+      margin-bottom: 4px;
+    }
+
+    .price-card__type {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .price-card__price {
+      font-family: var(--font-heading);
+      font-size: clamp(28px, 3vw, 36px);
+      font-weight: 700;
+      color: var(--color-text);
+      line-height: 1;
+    }
+
+    .price-card__price span {
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--color-text-muted);
+    }
+
+    .price-card__desc {
+      font-size: 14px;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+      margin-top: 4px;
+    }
+
+    .pricing__conditions {
+      display: flex;
+      gap: 32px;
+      margin-top: 40px;
+      padding: 28px 32px;
+      background: var(--color-bg);
+      border-radius: 16px;
+      border: 1px solid var(--color-border);
+      flex-wrap: wrap;
+    }
+
+    .pricing__condition {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .pricing__condition-icon {
+      font-size: 24px;
+      flex-shrink: 0;
+    }
+
+    .pricing__condition strong {
+      display: block;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--color-text);
+    }
+
+    .pricing__condition span {
+      font-size: 13px;
+      color: var(--color-text-muted);
+    }
+
+    @media (max-width: 960px) {
+      .pricing__grid {
+        grid-template-columns: 1fr;
+        max-width: 480px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .pricing__conditions {
+        flex-direction: column;
+        gap: 20px;
+        padding: 24px 20px;
+      }
     }
 
     /* ─────────────────────────────────────────────
@@ -943,16 +1235,224 @@
     }
 
     /* ─────────────────────────────────────────────
+       CTA FORM
+    ───────────────────────────────────────────── */
+    .cta-form {
+      max-width: 440px;
+      margin: 0 auto 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .cta-form__input {
+      width: 100%;
+      background: rgba(255,255,255,0.1);
+      border: 1.5px solid rgba(255,255,255,0.18);
+      border-radius: 50px;
+      padding: 16px 22px;
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: #fff;
+      outline: none;
+      transition: border-color 0.25s, background 0.25s;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    .cta-form__input::placeholder {
+      color: rgba(255,255,255,0.42);
+    }
+
+    .cta-form__input:focus {
+      border-color: rgba(255,255,255,0.48);
+      background: rgba(255,255,255,0.15);
+    }
+
+    .cta-form__input--error {
+      border-color: rgba(255, 120, 120, 0.8) !important;
+    }
+
+    .cta-form__error {
+      font-size: 12px;
+      color: #ffaaaa;
+      padding: 4px 20px 0;
+      display: none;
+    }
+
+    .cta-form__error.is-visible {
+      display: block;
+    }
+
+    .cta-form__submit {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: #fff;
+      color: var(--color-accent-dark);
+      font-family: var(--font-body);
+      font-size: 16px;
+      font-weight: 700;
+      padding: 18px 44px;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+      margin-top: 4px;
+    }
+
+    .cta-form__submit:hover {
+      background: #fdf8f3;
+      transform: translateY(-2px);
+      box-shadow: 0 14px 44px rgba(0, 0, 0, 0.32);
+    }
+
+    .cta-form__submit:active {
+      transform: translateY(0);
+    }
+
+    .cta-form__submit:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .cta-form__micro {
+      font-size: 12px;
+      color: rgba(255,255,255,0.42);
+      text-align: center;
+      margin-top: 2px;
+    }
+
+    .cta-success {
+      display: none;
+      text-align: center;
+      padding: 8px 0 32px;
+    }
+
+    .cta-success.is-visible {
+      display: block;
+    }
+
+    .cta-success__icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.12);
+      border: 2px solid rgba(255,255,255,0.28);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      margin: 0 auto 20px;
+    }
+
+    .cta-success__title {
+      font-family: var(--font-heading);
+      font-size: 26px;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    .cta-success__text {
+      font-size: 15px;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.65;
+    }
+
+    /* ─────────────────────────────────────────────
+       MOBILE CALL BAR
+    ───────────────────────────────────────────── */
+    .mobile-call-bar {
+      display: none;
+    }
+
+    .mobile-call-bar__inner {
+      display: flex;
+      gap: 10px;
+    }
+
+    .mobile-call-bar__btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 700;
+      padding: 14px;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.2s;
+      flex: 1;
+    }
+
+    .mobile-call-bar__btn:active {
+      opacity: 0.85;
+      transform: scale(0.98);
+    }
+
+    .mobile-call-bar__btn--call {
+      background: var(--color-bg-white);
+      color: var(--color-accent-dark);
+      border: 1.5px solid var(--color-border);
+      box-shadow: 0 2px 8px rgba(70, 41, 8, 0.06);
+      flex: 0 0 auto;
+      padding: 14px 22px;
+    }
+
+    .mobile-call-bar__btn--form {
+      background: var(--gradient-cta);
+      color: #fff;
+      box-shadow: 0 4px 16px rgba(139, 90, 43, 0.3);
+    }
+
+    @media (max-width: 720px) {
+      body {
+        padding-bottom: 74px;
+      }
+
+      .mobile-call-bar {
+        display: block;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 200;
+        padding: 10px 16px;
+        padding-bottom: calc(10px + env(safe-area-inset-bottom));
+        background: rgba(245, 244, 240, 0.96);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-top: 1px solid var(--color-border);
+        box-shadow: 0 -4px 20px rgba(70, 41, 8, 0.1);
+      }
+    }
+
+    /* ─────────────────────────────────────────────
        RESPONSIVE
     ───────────────────────────────────────────── */
     @media (max-width: 960px) {
       .advantages__grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
         gap: 16px;
       }
 
       .adv-card {
         padding: 32px 24px;
+      }
+
+      .how-it-works__steps::before {
+        display: none;
+      }
+
+      .step__circle {
+        width: 48px;
+        height: 48px;
+        font-size: 15px;
       }
 
       .services__grid {
@@ -993,7 +1493,49 @@
         padding: 130px 0 72px;
       }
 
+      .hero__inner {
+        grid-template-columns: 1fr;
+      }
+
+      .hero__visual {
+        display: none;
+      }
+
       .results__grid {
+        grid-template-columns: 1fr;
+      }
+
+      .how-it-works__steps {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+
+      .step {
+        flex-direction: row;
+        align-items: flex-start;
+        text-align: left;
+        padding: 20px 0;
+        gap: 16px;
+        border-bottom: 1px solid var(--color-border);
+      }
+
+      .step:last-child {
+        border-bottom: none;
+      }
+
+      .step__circle {
+        margin-bottom: 0;
+      }
+
+      .step__body {
+        align-items: flex-start;
+      }
+
+      .step__icon {
+        display: none;
+      }
+
+      .advantages__grid {
         grid-template-columns: 1fr;
       }
 
@@ -1001,9 +1543,17 @@
         grid-template-columns: repeat(2, 1fr);
       }
 
+      .service-card:last-child:nth-child(2n+1) {
+        grid-column: 1 / -1;
+      }
+
       .nav__cta {
         font-size: 12px;
         padding: 8px 16px;
+      }
+
+      .nav__phone {
+        display: none;
       }
 
       .for-whom__stat {
@@ -1035,6 +1585,18 @@
         grid-template-columns: repeat(2, 1fr);
       }
 
+      .trust-bar__inner {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        justify-items: start;
+      }
+
+      .trust-item:last-child:nth-child(2n+1) {
+        grid-column: 1 / -1;
+        justify-self: center;
+      }
+
       .result-card {
         flex-direction: column;
         gap: 12px;
@@ -1055,6 +1617,18 @@
       }
     }
   </style>
+
+  <!-- Яндекс.Метрика — замените 00000000 на номер вашего счётчика (3 места в этом блоке) -->
+  <script>
+    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+    m[i].l=1*new Date();
+    for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}
+    k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+    (window,document,'script','https://mc.yandex.ru/metrika/tag.js','ym');
+    ym(00000000,'init',{clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true});
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/00000000" style="position:absolute;left:-9999px;" alt="" /></div></noscript>
+  <!-- /Яндекс.Метрика -->
 </head>
 <body>
 
@@ -1063,6 +1637,10 @@
     <div class="container">
       <div class="nav__inner">
         <a href="#" class="nav__logo">Эстет<span>Групп</span></a>
+        <a href="tel:+79039690322" class="nav__phone">
+          <span class="nav__phone-icon">📞</span>
+          +7 (903) 969-03-22
+        </a>
         <a href="#cta" class="nav__cta">Рассчитать стоимость</a>
       </div>
     </div>
@@ -1071,25 +1649,34 @@
   <!-- HERO -->
   <section class="hero">
     <div class="container">
-      <div class="hero__content">
-        <span class="hero__eyebrow">Москва и Московская область</span>
-        <h1 class="hero__title">
-          Тёплый балкон<br />
-          <span class="gradient-text">под ключ</span><br />
-          в Москве и МО
-        </h1>
-        <p class="hero__subtitle">
-          Остекление, утепление и отделка с гарантией и фиксированной ценой.
-          Бесплатный замер и точная смета до начала работ. Без скрытых доплат.
-        </p>
-        <div class="hero__badges">
-          <span class="badge"><span class="badge__dot"></span>Бесплатный замер</span>
-          <span class="badge"><span class="badge__dot"></span>Работа под ключ</span>
-          <span class="badge"><span class="badge__dot"></span>Комфорт круглый год</span>
+      <div class="hero__inner">
+        <div class="hero__content">
+          <span class="hero__eyebrow">Москва и Московская область</span>
+          <h1 class="hero__title">
+            Тёплый балкон<br />
+            <span class="gradient-text">под ключ</span><br />
+            в Москве и МО
+          </h1>
+          <p class="hero__subtitle">
+            Остекление, утепление и отделка с гарантией и фиксированной ценой.
+            Бесплатный замер и точная смета до начала работ. Без скрытых доплат.
+          </p>
+          <div class="hero__badges">
+            <span class="badge"><span class="badge__dot"></span>Бесплатный замер</span>
+            <span class="badge"><span class="badge__dot"></span>Работа под ключ</span>
+            <span class="badge"><span class="badge__dot"></span>Комфорт круглый год</span>
+          </div>
+          <div class="hero__actions">
+            <a href="#cta" class="btn-primary">Рассчитать стоимость балкона</a>
+            <span class="hero__micro">Ответим и рассчитаем стоимость</span>
+          </div>
         </div>
-        <div class="hero__actions">
-          <a href="#cta" class="btn-primary">Рассчитать стоимость балкона</a>
-          <span class="hero__micro">Ответим и рассчитаем стоимость</span>
+        <div class="hero__visual">
+          <!-- Заменить содержимое .hero__photo на <img src="фото.jpg" alt="Балкон до и после" /> когда появится фото -->
+          <div class="hero__photo">
+            <span class="hero__photo-icon">🏠</span>
+            <span class="hero__photo-caption">Фото балкона</span>
+          </div>
         </div>
       </div>
     </div>
@@ -1101,7 +1688,7 @@
       <div class="trust-bar__inner">
         <div class="trust-item"><span class="trust-item__check">✓</span>Бесплатный выезд замерщика</div>
         <div class="trust-item"><span class="trust-item__check">✓</span>Работа под ключ</div>
-        <div class="trust-item"><span class="trust-item__check">✓</span>Гарантия на работы</div>
+        <div class="trust-item"><span class="trust-item__check">✓</span>Гарантия 5 лет</div>
         <div class="trust-item"><span class="trust-item__check">✓</span>Фиксированная цена по договору</div>
         <div class="trust-item"><span class="trust-item__check">✓</span>Балкон пригоден круглый год</div>
       </div>
@@ -1165,7 +1752,60 @@
         <div class="adv-card reveal reveal--delay-3">
           <div class="adv-card__icon">📋</div>
           <h3 class="adv-card__title">Фиксированная цена и гарантия</h3>
-          <p class="adv-card__text">Стоимость закреплена в договоре и не меняется. Гарантия на все виды работ. Платите ровно столько, сколько обговорили.</p>
+          <p class="adv-card__text">Стоимость закреплена в договоре и не меняется. Гарантия 5 лет. Рассрочка 0% на 6 месяцев — без переплат, предоплата всего 10%.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section how-it-works">
+    <div class="container">
+      <div class="how-it-works__header reveal">
+        <span class="section-label">Как мы работаем</span>
+        <h2 class="section-title">Пять шагов до<br /><span class="gradient-text">готового балкона</span></h2>
+        <p class="section-subtitle">От звонка до сдачи — обычно 7–14 дней. Вы контролируете каждый этап.</p>
+      </div>
+      <div class="how-it-works__steps">
+        <div class="step reveal reveal--delay-1">
+          <div class="step__circle">01</div>
+          <div class="step__body">
+            <span class="step__icon">📞</span>
+            <h3 class="step__title">Оставляете заявку</h3>
+            <p class="step__text">Звонок, форма на сайте или Telegram — как удобно</p>
+          </div>
+        </div>
+        <div class="step reveal reveal--delay-2">
+          <div class="step__circle">02</div>
+          <div class="step__body">
+            <span class="step__icon">📐</span>
+            <h3 class="step__title">Бесплатный замер</h3>
+            <p class="step__text">Приезжаем в удобное время, замеряем и фотографируем</p>
+          </div>
+        </div>
+        <div class="step reveal reveal--delay-3">
+          <div class="step__circle">03</div>
+          <div class="step__body">
+            <span class="step__icon">📋</span>
+            <h3 class="step__title">Смета и договор</h3>
+            <p class="step__text">Фиксируем цену и сроки — без скрытых доплат</p>
+          </div>
+        </div>
+        <div class="step reveal reveal--delay-4">
+          <div class="step__circle">04</div>
+          <div class="step__body">
+            <span class="step__icon">🔨</span>
+            <h3 class="step__title">Монтаж</h3>
+            <p class="step__text">Работаем аккуратно, убираем за собой каждый день</p>
+          </div>
+        </div>
+        <div class="step reveal reveal--delay-5">
+          <div class="step__circle">05</div>
+          <div class="step__body">
+            <span class="step__icon">🏠</span>
+            <h3 class="step__title">Сдача объекта</h3>
+            <p class="step__text">Принимаете работу, подписываем акт, получаете гарантийный лист</p>
+          </div>
         </div>
       </div>
     </div>
@@ -1205,16 +1845,16 @@
           <p class="for-whom__visual-text">Приходим, замеряем, согласовываем смету. Вы подписываете договор с фиксированной ценой и датами. Мы делаем всё остальное — до финального результата.</p>
           <div class="for-whom__stat">
             <div class="stat">
-              <span class="stat__num">100%</span>
-              <span class="stat__label">Под ключ</span>
+              <span class="stat__num">12 534</span>
+              <span class="stat__label">Выполненных проекта</span>
             </div>
             <div class="stat">
-              <span class="stat__num">0₽</span>
-              <span class="stat__label">За замер</span>
+              <span class="stat__num">5 лет</span>
+              <span class="stat__label">Гарантия на работы</span>
             </div>
             <div class="stat">
-              <span class="stat__num">12</span>
-              <span class="stat__label">Мес. гарантии</span>
+              <span class="stat__num">43</span>
+              <span class="stat__label">Партнёра-поставщика</span>
             </div>
           </div>
         </div>
@@ -1250,6 +1890,58 @@
         <div class="service-card reveal reveal--delay-5">
           <span class="service-card__icon">✅</span>
           <span class="service-card__title">Уборка и сдача объекта</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="section pricing" id="pricing">
+    <div class="container">
+      <div class="reveal">
+        <span class="section-label">Стоимость</span>
+        <h2 class="section-title">Цены на остекление балконов</h2>
+        <p class="section-subtitle">Точная стоимость — после бесплатного замера. Цена фиксируется в договоре.</p>
+      </div>
+      <div class="pricing__grid">
+        <div class="price-card reveal reveal--delay-1">
+          <div class="price-card__type">Холодное остекление</div>
+          <div class="price-card__price">от 5 148 <span>₽/м²</span></div>
+          <p class="price-card__desc">Алюминиевый профиль. Защита от ветра и дождя. Подходит для хранения и летнего отдыха.</p>
+        </div>
+        <div class="price-card price-card--featured reveal reveal--delay-2">
+          <div class="price-card__badge">Популярный</div>
+          <div class="price-card__type">Тёплое остекление</div>
+          <div class="price-card__price">от 9 026 <span>₽/м²</span></div>
+          <p class="price-card__desc">ПВХ-профиль с двухкамерным стеклопакетом. Тепло зимой, прохладно летом — полноценная жилая зона.</p>
+        </div>
+        <div class="price-card reveal reveal--delay-3">
+          <div class="price-card__type">Панорамное остекление</div>
+          <div class="price-card__price">от 14 999 <span>₽/м²</span></div>
+          <p class="price-card__desc">Максимум света и вид без рамок. Безрамное или полурамное исполнение.</p>
+        </div>
+      </div>
+      <div class="pricing__conditions reveal">
+        <div class="pricing__condition">
+          <span class="pricing__condition-icon">💳</span>
+          <div>
+            <strong>Рассрочка 0% на 6 месяцев</strong>
+            <span>Без переплат — от компании, не от банка</span>
+          </div>
+        </div>
+        <div class="pricing__condition">
+          <span class="pricing__condition-icon">🤝</span>
+          <div>
+            <strong>Предоплата — только 10%</strong>
+            <span>Остаток — после сдачи готового балкона</span>
+          </div>
+        </div>
+        <div class="pricing__condition">
+          <span class="pricing__condition-icon">📐</span>
+          <div>
+            <strong>Бесплатный выезд замерщика</strong>
+            <span>Точная смета на месте, без обязательств</span>
+          </div>
         </div>
       </div>
     </div>
@@ -1303,16 +1995,47 @@
         <span class="final-cta__label">Бесплатно и без обязательств</span>
         <h2 class="final-cta__title">Получите расчёт<br />стоимости бесплатно</h2>
         <p class="final-cta__subtitle">Оставьте заявку — перезвоним в течение 30 минут и рассчитаем точную стоимость для вашего балкона.</p>
-        <a href="tel:+74951234567" class="btn-light">Получить расчёт</a>
+        <!-- Форма заявки. TODO: подключить action к реальному бэкенду или сервису (Formspree, Netlify Forms) -->
+        <form class="cta-form" id="cta-form" novalidate>
+          <div>
+            <input class="cta-form__input" type="text" name="name" placeholder="Ваше имя (необязательно)" autocomplete="name" />
+          </div>
+          <div>
+            <input class="cta-form__input" type="tel" name="phone" id="cta-phone" placeholder="+7 (XXX) XXX-XX-XX" autocomplete="tel" required />
+            <span class="cta-form__error" id="phone-error">Введите корректный номер телефона</span>
+          </div>
+          <button type="submit" class="cta-form__submit" id="cta-submit">
+            Получить расчёт бесплатно
+          </button>
+          <p class="cta-form__micro">Ответим в течение 30 минут · Без спама</p>
+        </form>
+
+        <!-- Состояние после отправки -->
+        <div class="cta-success" id="cta-success">
+          <div class="cta-success__icon">✓</div>
+          <h3 class="cta-success__title">Заявка принята!</h3>
+          <p class="cta-success__text">Перезвоним в течение 30 минут<br />и рассчитаем стоимость вашего балкона.</p>
+        </div>
+
         <div class="final-cta__contacts">
-          <a href="tel:+74951234567" class="final-cta__contact">
+          <a href="tel:+79039690322" class="final-cta__contact">
             <span class="final-cta__contact-icon">📞</span>
-            +7 (495) 123-45-67
+            +7 (903) 969-03-22
           </a>
           <span class="final-cta__sep">·</span>
-          <a href="https://estet-grupp.ru" class="final-cta__contact" target="_blank" rel="noopener">
-            <span class="final-cta__contact-icon">🌐</span>
-            estet-grupp.ru
+          <a href="tel:+74959690322" class="final-cta__contact">
+            <span class="final-cta__contact-icon">📞</span>
+            +7 (495) 969-03-22
+          </a>
+          <span class="final-cta__sep">·</span>
+          <a href="https://t.me/balkon_estet" class="final-cta__contact" target="_blank" rel="noopener">
+            <span class="final-cta__contact-icon">✈️</span>
+            Telegram
+          </a>
+          <span class="final-cta__sep">·</span>
+          <a href="https://vk.ru/balkonestet" class="final-cta__contact" target="_blank" rel="noopener">
+            <span class="final-cta__contact-icon">💬</span>
+            ВКонтакте
           </a>
         </div>
       </div>
@@ -1324,10 +2047,22 @@
     <div class="container">
       <div class="footer__inner">
         <a href="#" class="footer__logo">Эстет Групп</a>
-        <span class="footer__copy">© 2025 Компания «Эстет Групп». Москва и Московская область.</span>
+        <span class="footer__copy">© 2026 Компания «Эстет Групп». Москва и Московская область.</span>
       </div>
     </div>
   </footer>
+
+  <!-- MOBILE CALL BAR (только мобильные, скрыта на десктопе через CSS) -->
+  <div class="mobile-call-bar" id="mobile-call-bar">
+    <div class="mobile-call-bar__inner">
+      <a href="tel:+79039690322" class="mobile-call-bar__btn mobile-call-bar__btn--call">
+        📞 Позвонить
+      </a>
+      <a href="#cta" class="mobile-call-bar__btn mobile-call-bar__btn--form">
+        Получить расчёт →
+      </a>
+    </div>
+  </div>
 
   <script>
     // Sticky nav shadow on scroll
@@ -1350,6 +2085,61 @@
     );
 
     document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+    // CTA form handling
+    const ctaForm = document.getElementById('cta-form');
+    const ctaSuccess = document.getElementById('cta-success');
+    const phoneInput = document.getElementById('cta-phone');
+    const phoneError = document.getElementById('phone-error');
+    const submitBtn = document.getElementById('cta-submit');
+
+    function isValidPhone(value) {
+      return value.replace(/\D/g, '').length >= 10;
+    }
+
+    phoneInput.addEventListener('input', () => {
+      if (isValidPhone(phoneInput.value)) {
+        phoneInput.classList.remove('cta-form__input--error');
+        phoneError.classList.remove('is-visible');
+      }
+    });
+
+    ctaForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (!isValidPhone(phoneInput.value.trim())) {
+        phoneInput.classList.add('cta-form__input--error');
+        phoneError.classList.add('is-visible');
+        phoneInput.focus();
+        return;
+      }
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Отправляем…';
+      // TODO: заменить setTimeout на реальный fetch к бэкенду или Formspree
+      setTimeout(() => {
+        ctaForm.style.display = 'none';
+        ctaSuccess.classList.add('is-visible');
+        ymGoal('form_submit'); // Цель: заявка отправлена
+      }, 800);
+    });
+
+    // Яндекс.Метрика — цели. Замените 00000000 на номер счётчика.
+    const YM_ID = 00000000;
+    function ymGoal(name) {
+      if (typeof ym !== 'undefined') ym(YM_ID, 'reachGoal', name);
+    }
+
+    // Цель: клик по кнопке «Получить расчёт»
+    submitBtn.addEventListener('click', () => ymGoal('cta_click'));
+
+    // Цель: клик по номеру телефона
+    document.querySelectorAll('a[href^="tel:"]').forEach((el) => {
+      el.addEventListener('click', () => ymGoal('phone_click'));
+    });
+
+    // Цель: клик по мессенджеру (Telegram / ВКонтакте)
+    document.querySelectorAll('a[href*="t.me"], a[href*="vk.ru"]').forEach((el) => {
+      el.addEventListener('click', () => ymGoal('messenger_click'));
+    });
 
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
