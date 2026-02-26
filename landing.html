@@ -616,10 +616,23 @@
       color: rgba(255,255,255,0.82);
     }
 
-    .transform__list li::before {
-      content: attr(data-icon);
+    .transform__icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 7px;
+      background: rgba(139, 90, 43, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #8B5A2B;
       flex-shrink: 0;
       margin-top: 1px;
+    }
+    .transform__icon svg { width: 15px; height: 15px; }
+
+    .transform__panel--solution .transform__icon {
+      background: rgba(255, 255, 255, 0.15);
+      color: #fff;
     }
 
     /* ─────────────────────────────────────────────
@@ -819,16 +832,17 @@
     }
 
     .for-whom__item-icon {
-      font-size: 22px;
       flex-shrink: 0;
       width: 44px;
       height: 44px;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(135deg, rgba(196, 154, 108, 0.12), rgba(70, 41, 8, 0.06));
+      background: var(--gradient-cta);
       border-radius: 10px;
+      color: #fff;
     }
+    .for-whom__item-icon svg { width: 22px; height: 22px; }
 
     .for-whom__item-text {
       font-size: 15px;
@@ -2047,10 +2061,10 @@
           <span class="transform__tag">Было</span>
           <h3 class="transform__panel-title">Холодный и бесполезный балкон</h3>
           <ul class="transform__list">
-            <li data-icon="❄️">Промерзает зимой, невозможно использовать</li>
-            <li data-icon="🔊">Уличный шум проникает в квартиру</li>
-            <li data-icon="💸">Тепло уходит через щели и тонкие стёкла</li>
-            <li data-icon="📦">Захламлённое хранилище без ценности</li>
+            <li><span class="transform__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2" x2="12" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="12" y1="2" x2="15" y2="5"/><line x1="12" y1="2" x2="9" y2="5"/><line x1="12" y1="22" x2="15" y2="19"/><line x1="12" y1="22" x2="9" y2="19"/><line x1="2" y1="12" x2="5" y2="9"/><line x1="2" y1="12" x2="5" y2="15"/><line x1="22" y1="12" x2="19" y2="9"/><line x1="22" y1="12" x2="19" y2="15"/></svg></span>Промерзает зимой, невозможно использовать</li>
+            <li><span class="transform__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 010 7.07"/><path d="M19.07 4.93a10 10 0 010 14.14"/></svg></span>Уличный шум проникает в квартиру</li>
+            <li><span class="transform__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9.59 4.59A2 2 0 1111 8H2m10.59 11.41A2 2 0 1014 16H2m15.73-8.27A2.5 2.5 0 1119.5 12H2"/></svg></span>Тепло уходит через щели и тонкие стёкла</li>
+            <li><span class="transform__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 002 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></span>Захламлённое хранилище без ценности</li>
           </ul>
         </div>
         <div class="transform__divider">
@@ -2060,10 +2074,10 @@
           <span class="transform__tag">Стало</span>
           <h3 class="transform__panel-title" style="color:#fff;">Готовая жилая зона под ключ</h3>
           <ul class="transform__list">
-            <li data-icon="☀️">Тепло и уютно в любое время года</li>
-            <li data-icon="🔇">Надёжная шумоизоляция — тишина дома</li>
-            <li data-icon="🏡">Дополнительные квадратные метры жилья</li>
-            <li data-icon="📈">Повышение рыночной стоимости квартиры</li>
+            <li><span class="transform__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></span>Тепло и уютно в любое время года</li>
+            <li><span class="transform__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg></span>Надёжная шумоизоляция — тишина дома</li>
+            <li><span class="transform__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span>Дополнительные квадратные метры жилья</li>
+            <li><span class="transform__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></span>Повышение рыночной стоимости квартиры</li>
           </ul>
         </div>
       </div>
@@ -2163,19 +2177,19 @@
           </div>
           <div class="for-whom__list">
             <div class="for-whom__item reveal reveal--delay-1">
-              <span class="for-whom__item-icon">🏢</span>
+              <span class="for-whom__item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 22V12h6v10"/><path d="M3 9h18"/></svg></span>
               <span class="for-whom__item-text">Владельцы квартир в многоэтажках</span>
             </div>
             <div class="for-whom__item reveal reveal--delay-2">
-              <span class="for-whom__item-icon">🆕</span>
+              <span class="for-whom__item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>
               <span class="for-whom__item-text">Новостройки — чистовой ремонт балкона</span>
             </div>
             <div class="for-whom__item reveal reveal--delay-3">
-              <span class="for-whom__item-icon">🏠</span>
+              <span class="for-whom__item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span>
               <span class="for-whom__item-text">Вторичное жильё — обновление и утепление</span>
             </div>
             <div class="for-whom__item reveal reveal--delay-4">
-              <span class="for-whom__item-icon">💼</span>
+              <span class="for-whom__item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="12" x2="12" y2="17"/><line x1="9" y1="14.5" x2="15" y2="14.5"/></svg></span>
               <span class="for-whom__item-text">Для кабинета, зоны отдыха или хранения</span>
             </div>
           </div>
