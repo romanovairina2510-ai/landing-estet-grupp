@@ -27,10 +27,11 @@
       --color-bg-white: #ffffff;
       --color-accent: #8B5A2B;
       --color-accent-light: #C49A6C;
-      --color-accent-dark: #5C3A1E;
+      --color-accent-dark: #462908;
       --color-border: #e4ddd4;
+      --color-card: #F5F4F0;
       --gradient-heading: linear-gradient(135deg, #462908 0%, #8B5A2B 50%, #C49A6C 100%);
-      --gradient-cta: linear-gradient(135deg, #8B5A2B 0%, #C49A6C 100%);
+      --gradient-cta: #462908;
       --shadow-card: 0 4px 24px rgba(70, 41, 8, 0.08);
       --shadow-card-hover: 0 12px 40px rgba(70, 41, 8, 0.14);
       --radius: 16px;
@@ -63,6 +64,7 @@
 
     .section {
       padding: 96px 0;
+      scroll-margin-top: 80px;
     }
 
     .section--white {
@@ -97,15 +99,30 @@
     }
 
     .gradient-text {
-      background: var(--gradient-heading);
+      background: linear-gradient(90deg,
+        #462908 0%,
+        #8B5A2B 20%,
+        #C49A6C 38%,
+        #f0d49a 50%,
+        #C49A6C 62%,
+        #8B5A2B 80%,
+        #462908 100%
+      );
+      background-size: 250% auto;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+      animation: golden-wave 6s linear infinite;
     }
 
     /* ─────────────────────────────────────────────
        ANIMATIONS
     ───────────────────────────────────────────── */
+    @keyframes golden-wave {
+      0%   { background-position: 200% center; }
+      100% { background-position: -200% center; }
+    }
+
     .reveal {
       opacity: 0;
       transform: translateY(36px);
@@ -182,13 +199,39 @@
       cursor: pointer;
       text-decoration: none;
       transition: opacity var(--transition), transform var(--transition), box-shadow var(--transition);
-      box-shadow: 0 4px 16px rgba(139, 90, 43, 0.28);
+      box-shadow: 0 4px 16px rgba(70, 41, 8, 0.28);
     }
 
     .nav__cta:hover {
       opacity: 0.9;
       transform: translateY(-1px);
-      box-shadow: 0 8px 24px rgba(139, 90, 43, 0.34);
+      box-shadow: 0 8px 24px rgba(70, 41, 8, 0.34);
+    }
+
+    .nav__links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .nav__link {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--color-text-muted);
+      text-decoration: none;
+      transition: color var(--transition);
+      white-space: nowrap;
+    }
+
+    .nav__link:hover {
+      color: var(--color-accent);
+    }
+
+    .nav__contact {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 2px;
     }
 
     .nav__phone {
@@ -201,6 +244,7 @@
       text-decoration: none;
       letter-spacing: 0.01em;
       transition: color var(--transition);
+      line-height: 1.2;
     }
 
     .nav__phone:hover {
@@ -209,6 +253,13 @@
 
     .nav__phone-icon {
       font-size: 15px;
+    }
+
+    .nav__hours {
+      font-size: 11px;
+      color: var(--color-text-light);
+      font-weight: 500;
+      letter-spacing: 0.02em;
     }
 
     /* ─────────────────────────────────────────────
@@ -239,7 +290,7 @@
       left: -150px;
       width: 500px;
       height: 500px;
-      background: radial-gradient(circle, rgba(139, 90, 43, 0.07) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(70, 41, 8, 0.07) 0%, transparent 70%);
       pointer-events: none;
     }
 
@@ -391,14 +442,14 @@
       cursor: pointer;
       text-decoration: none;
       transition: opacity var(--transition), transform var(--transition), box-shadow var(--transition);
-      box-shadow: 0 6px 28px rgba(139, 90, 43, 0.32);
+      box-shadow: 0 6px 28px rgba(70, 41, 8, 0.32);
       align-self: flex-start;
     }
 
     .btn-primary:hover {
       opacity: 0.9;
       transform: translateY(-2px);
-      box-shadow: 0 12px 36px rgba(139, 90, 43, 0.38);
+      box-shadow: 0 12px 36px rgba(70, 41, 8, 0.38);
     }
 
     .btn-primary:active {
@@ -481,7 +532,7 @@
       justify-content: center;
       color: #fff;
       font-size: 18px;
-      box-shadow: 0 4px 16px rgba(139, 90, 43, 0.3);
+      box-shadow: 0 4px 16px rgba(70, 41, 8, 0.3);
     }
 
     .transform__tag {
@@ -569,21 +620,22 @@
     .adv-card:hover {
       box-shadow: var(--shadow-card-hover);
       transform: translateY(-4px);
-      border-color: rgba(139, 90, 43, 0.2);
+      border-color: rgba(70, 41, 8, 0.2);
     }
 
     .adv-card__icon {
       width: 52px;
       height: 52px;
       border-radius: 14px;
-      background: linear-gradient(135deg, rgba(196, 154, 108, 0.15), rgba(139, 90, 43, 0.08));
+      background: var(--gradient-cta);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 24px;
       margin-bottom: 24px;
-      border: 1px solid rgba(196, 154, 108, 0.2);
+      color: #fff;
+      flex-shrink: 0;
     }
+    .adv-card__icon svg { width: 26px; height: 26px; }
 
     .adv-card__title {
       font-family: var(--font-heading);
@@ -626,7 +678,7 @@
       left: 10%;
       right: 10%;
       height: 2px;
-      background: linear-gradient(90deg, rgba(196, 154, 108, 0.2), rgba(139, 90, 43, 0.3), rgba(196, 154, 108, 0.2));
+      background: linear-gradient(90deg, rgba(196, 154, 108, 0.2), rgba(70, 41, 8, 0.3), rgba(196, 154, 108, 0.2));
       z-index: 0;
     }
 
@@ -660,7 +712,7 @@
 
     .step:hover .step__circle {
       border-color: var(--color-accent-light);
-      box-shadow: 0 4px 16px rgba(139, 90, 43, 0.14);
+      box-shadow: 0 4px 16px rgba(70, 41, 8, 0.14);
     }
 
     .step__body {
@@ -670,10 +722,17 @@
     }
 
     .step__icon {
-      font-size: 22px;
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: rgba(139, 90, 43, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-accent);
       margin-bottom: 10px;
-      line-height: 1;
     }
+    .step__icon svg { width: 20px; height: 20px; }
 
     .step__title {
       font-family: var(--font-heading);
@@ -724,7 +783,7 @@
 
     .for-whom__item:hover {
       box-shadow: var(--shadow-card);
-      border-color: rgba(139, 90, 43, 0.15);
+      border-color: rgba(70, 41, 8, 0.15);
     }
 
     .for-whom__item-icon {
@@ -735,7 +794,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(135deg, rgba(196, 154, 108, 0.12), rgba(139, 90, 43, 0.06));
+      background: linear-gradient(135deg, rgba(196, 154, 108, 0.12), rgba(70, 41, 8, 0.06));
       border-radius: 10px;
     }
 
@@ -828,14 +887,21 @@
       background: var(--color-bg-white);
       box-shadow: var(--shadow-card);
       transform: translateY(-3px);
-      border-color: rgba(139, 90, 43, 0.18);
+      border-color: rgba(70, 41, 8, 0.18);
     }
 
     .service-card__icon {
-      font-size: 28px;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: var(--gradient-cta);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       margin-bottom: 12px;
-      display: block;
+      color: #fff;
     }
+    .service-card__icon svg { width: 22px; height: 22px; }
 
     .service-card__title {
       font-size: 13px;
@@ -878,7 +944,7 @@
     .price-card--featured {
       background: #fff;
       border-color: transparent;
-      box-shadow: 0 4px 24px rgba(139, 90, 43, 0.14);
+      box-shadow: 0 4px 24px rgba(70, 41, 8, 0.14);
     }
 
     .price-card__badge {
@@ -944,9 +1010,17 @@
     }
 
     .pricing__condition-icon {
-      font-size: 24px;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: var(--gradient-cta);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
       flex-shrink: 0;
     }
+    .pricing__condition-icon svg { width: 22px; height: 22px; }
 
     .pricing__condition strong {
       display: block;
@@ -1154,7 +1228,7 @@
     .result-card:hover {
       box-shadow: var(--shadow-card-hover);
       transform: translateY(-3px);
-      border-color: rgba(139, 90, 43, 0.16);
+      border-color: rgba(70, 41, 8, 0.16);
     }
 
     .result-card__num {
@@ -1324,6 +1398,7 @@
       text-align: center;
       position: relative;
       overflow: hidden;
+      scroll-margin-top: 80px;
     }
 
     .final-cta::before {
@@ -1632,7 +1707,7 @@
     .mobile-call-bar__btn--form {
       background: var(--gradient-cta);
       color: #fff;
-      box-shadow: 0 4px 16px rgba(139, 90, 43, 0.3);
+      box-shadow: 0 4px 16px rgba(70, 41, 8, 0.3);
     }
 
     @media (max-width: 720px) {
@@ -1709,6 +1784,12 @@
       }
     }
 
+    @media (max-width: 960px) {
+      .nav__links {
+        display: none;
+      }
+    }
+
     @media (max-width: 720px) {
       .section {
         padding: 64px 0;
@@ -1777,7 +1858,7 @@
         padding: 8px 16px;
       }
 
-      .nav__phone {
+      .nav__contact {
         display: none;
       }
 
@@ -1862,10 +1943,19 @@
     <div class="container">
       <div class="nav__inner">
         <a href="#" class="nav__logo">Эстет<span>Групп</span></a>
-        <a href="tel:+79039690322" class="nav__phone">
-          <span class="nav__phone-icon">📞</span>
-          +7 (903) 969-03-22
-        </a>
+        <nav class="nav__links">
+          <a href="#pricing" class="nav__link">Цены</a>
+          <a href="#gallery" class="nav__link">Работы</a>
+          <a href="#reviews" class="nav__link">Отзывы</a>
+          <a href="#faq" class="nav__link">FAQ</a>
+        </nav>
+        <div class="nav__contact">
+          <a href="tel:+79039690322" class="nav__phone">
+            <span class="nav__phone-icon">📞</span>
+            +7 (903) 969-03-22
+          </a>
+          <span class="nav__hours">пн–вс, 9:00–20:00</span>
+        </div>
         <a href="#cta" class="nav__cta">Рассчитать стоимость</a>
       </div>
     </div>
@@ -1898,7 +1988,7 @@
         </div>
         <div class="hero__visual">
           <div class="hero__photo">
-            <img src="img/IMG_9691.JPG" alt="Готовый балкон с деревянной отделкой — работа Эстет Групп" />
+            <img src="img/IMG_9699.WEBP" alt="Готовый панорамный балкон с мягкой зоной — работа Эстет Групп" />
           </div>
         </div>
       </div>
@@ -1963,17 +2053,17 @@
       </div>
       <div class="advantages__grid">
         <div class="adv-card reveal reveal--delay-1">
-          <div class="adv-card__icon">📐</div>
+          <div class="adv-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="8" rx="2"/><line x1="7" y1="12" x2="7" y2="15"/><line x1="11" y1="12" x2="11" y2="14"/><line x1="15" y1="12" x2="15" y2="15"/><line x1="19" y1="12" x2="19" y2="14"/></svg></div>
           <h3 class="adv-card__title">Бесплатный замер и точная смета</h3>
           <p class="adv-card__text">Выезжаем в удобное для вас время. Замерщик составит точную смету на месте — никаких сюрпризов по цене в процессе работ.</p>
         </div>
         <div class="adv-card reveal reveal--delay-2">
-          <div class="adv-card__icon">🏠</div>
+          <div class="adv-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="3" x2="12" y2="21"/><line x1="3" y1="12" x2="21" y2="12"/></svg></div>
           <h3 class="adv-card__title">Тёплое остекление и утепление</h3>
           <p class="adv-card__text">Профили REHAU и KBE, двухкамерные стеклопакеты. Профессиональное утепление пола, стен и потолка. Балкон превращается в полноценную жилую зону.</p>
         </div>
         <div class="adv-card reveal reveal--delay-3">
-          <div class="adv-card__icon">📋</div>
+          <div class="adv-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.25C17.25 22.15 21 17.25 21 12V7l-9-5z"/><polyline points="9 12 11 14 15 10"/></svg></div>
           <h3 class="adv-card__title">Фиксированная цена и гарантия</h3>
           <p class="adv-card__text">Стоимость закреплена в договоре и не меняется. Гарантия 5 лет. Рассрочка 0% на 6 месяцев — без переплат, предоплата всего 10%.</p>
         </div>
@@ -1993,7 +2083,7 @@
         <div class="step reveal reveal--delay-1">
           <div class="step__circle">01</div>
           <div class="step__body">
-            <span class="step__icon">📞</span>
+            <span class="step__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.64A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></span>
             <h3 class="step__title">Оставляете заявку</h3>
             <p class="step__text">Звонок, форма на сайте или Telegram — как удобно</p>
           </div>
@@ -2001,7 +2091,7 @@
         <div class="step reveal reveal--delay-2">
           <div class="step__circle">02</div>
           <div class="step__body">
-            <span class="step__icon">📐</span>
+            <span class="step__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="8" rx="2"/><line x1="7" y1="12" x2="7" y2="15"/><line x1="11" y1="12" x2="11" y2="14"/><line x1="15" y1="12" x2="15" y2="15"/><line x1="19" y1="12" x2="19" y2="14"/></svg></span>
             <h3 class="step__title">Бесплатный замер</h3>
             <p class="step__text">Приезжаем в удобное время, замеряем и фотографируем</p>
           </div>
@@ -2009,7 +2099,7 @@
         <div class="step reveal reveal--delay-3">
           <div class="step__circle">03</div>
           <div class="step__body">
-            <span class="step__icon">📋</span>
+            <span class="step__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span>
             <h3 class="step__title">Смета и договор</h3>
             <p class="step__text">Фиксируем цену и сроки — без скрытых доплат</p>
           </div>
@@ -2017,7 +2107,7 @@
         <div class="step reveal reveal--delay-4">
           <div class="step__circle">04</div>
           <div class="step__body">
-            <span class="step__icon">🔨</span>
+            <span class="step__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></span>
             <h3 class="step__title">Монтаж</h3>
             <p class="step__text">Работаем аккуратно, убираем за собой каждый день</p>
           </div>
@@ -2025,7 +2115,7 @@
         <div class="step reveal reveal--delay-5">
           <div class="step__circle">05</div>
           <div class="step__body">
-            <span class="step__icon">🏠</span>
+            <span class="step__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span>
             <h3 class="step__title">Сдача объекта</h3>
             <p class="step__text">Принимаете работу, подписываем акт, получаете гарантийный лист</p>
           </div>
@@ -2095,23 +2185,23 @@
       </div>
       <div class="services__grid">
         <div class="service-card reveal reveal--delay-1">
-          <span class="service-card__icon">🪟</span>
+          <span class="service-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="3" x2="12" y2="21"/><line x1="3" y1="12" x2="21" y2="12"/></svg></span>
           <span class="service-card__title">Остекление тёплыми стеклопакетами</span>
         </div>
         <div class="service-card reveal reveal--delay-2">
-          <span class="service-card__icon">🌡️</span>
+          <span class="service-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 14.76V3.5a2.5 2.5 0 00-5 0v11.26a4.5 4.5 0 105 0z"/></svg></span>
           <span class="service-card__title">Утепление пола, стен и потолка</span>
         </div>
         <div class="service-card reveal reveal--delay-3">
-          <span class="service-card__icon">🎨</span>
+          <span class="service-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18.37 2.63L14 7l-1.59-1.59a2 2 0 00-2.82 0L8 7l9 9 1.59-1.59a2 2 0 000-2.82L17 10l4.37-4.37a2.12 2.12 0 10-3-3z"/><path d="M3 18c0 1.66 1.34 3 3 3 .55 0 2 0 2-1.5V18a1.5 1.5 0 00-3 0"/></svg></span>
           <span class="service-card__title">Внутренняя отделка — панели, вагонка</span>
         </div>
         <div class="service-card reveal reveal--delay-4">
-          <span class="service-card__icon">💡</span>
+          <span class="service-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="9" y1="18" x2="15" y2="18"/><line x1="10" y1="22" x2="14" y2="22"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.5 4.5 0 006.5 9a4.5 4.5 0 004 4.47V14"/></svg></span>
           <span class="service-card__title">Подготовка под освещение</span>
         </div>
         <div class="service-card reveal reveal--delay-5">
-          <span class="service-card__icon">✅</span>
+          <span class="service-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></span>
           <span class="service-card__title">Уборка и сдача объекта</span>
         </div>
       </div>
@@ -2146,21 +2236,21 @@
       </div>
       <div class="pricing__conditions reveal">
         <div class="pricing__condition">
-          <span class="pricing__condition-icon">💳</span>
+          <span class="pricing__condition-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></span>
           <div>
             <strong>Рассрочка 0% на 6 месяцев</strong>
             <span>Без переплат — от компании, не от банка</span>
           </div>
         </div>
         <div class="pricing__condition">
-          <span class="pricing__condition-icon">🤝</span>
+          <span class="pricing__condition-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="5" x2="5" y2="19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg></span>
           <div>
             <strong>Предоплата — только 10%</strong>
             <span>Остаток — после сдачи готового балкона</span>
           </div>
         </div>
         <div class="pricing__condition">
-          <span class="pricing__condition-icon">📐</span>
+          <span class="pricing__condition-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="8" rx="2"/><line x1="7" y1="12" x2="7" y2="15"/><line x1="11" y1="12" x2="11" y2="14"/><line x1="15" y1="12" x2="15" y2="15"/><line x1="19" y1="12" x2="19" y2="14"/></svg></span>
           <div>
             <strong>Бесплатный выезд замерщика</strong>
             <span>Точная смета на месте, без обязательств</span>
