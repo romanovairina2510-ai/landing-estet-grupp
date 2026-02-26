@@ -1267,8 +1267,19 @@
        TRUST BAR
     ───────────────────────────────────────────── */
     .trust-bar {
-      background: linear-gradient(135deg, #2e1a06 0%, #5a3214 50%, #3d2209 100%);
+      background: var(--color-bg);
       padding: 40px 0;
+      position: relative;
+    }
+
+    .trust-bar::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--color-border) 15%, #C49A6C 50%, var(--color-border) 85%, transparent);
     }
 
     .trust-bar__inner {
@@ -1285,7 +1296,7 @@
       gap: 10px;
       font-size: 13px;
       font-weight: 600;
-      color: rgba(255, 255, 255, 0.92);
+      color: var(--color-text);
       padding: 8px 28px;
       position: relative;
       letter-spacing: 0.03em;
@@ -1300,16 +1311,16 @@
       transform: translateY(-50%);
       width: 1px;
       height: 20px;
-      background: rgba(196, 154, 108, 0.4);
+      background: var(--color-border);
     }
 
     .trust-item__check {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--gradient-cta);
       flex-shrink: 0;
-      display: block;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
     }
 
     /* ─────────────────────────────────────────────
@@ -2000,12 +2011,58 @@
   <div class="trust-bar reveal">
     <div class="container">
       <div class="trust-bar__inner">
-        <div class="trust-item"><span class="trust-item__check">✓</span>Бесплатный выезд замерщика</div>
-        <div class="trust-item"><span class="trust-item__check">✓</span>Работа под ключ</div>
-        <div class="trust-item"><span class="trust-item__check">✓</span>Гарантия 5 лет</div>
-        <div class="trust-item"><span class="trust-item__check">✓</span>Фиксированная цена по договору</div>
-        <div class="trust-item"><span class="trust-item__check">✓</span>Балкон пригоден круглый год</div>
-        <div class="trust-item"><span class="trust-item__check">✓</span>Сдача объекта с тепловизором</div>
+        <div class="trust-item">
+          <span class="trust-item__check">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#8B5A2B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="7" width="16" height="6" rx="1.5"/>
+              <line x1="5" y1="7" x2="5" y2="10.5"/><line x1="8" y1="7" x2="8" y2="9"/><line x1="11" y1="7" x2="11" y2="10.5"/><line x1="14" y1="7" x2="14" y2="9"/>
+            </svg>
+          </span>Бесплатный выезд замерщика
+        </div>
+        <div class="trust-item">
+          <span class="trust-item__check">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#8B5A2B" stroke-width="1.5" stroke-linecap="round">
+              <circle cx="7" cy="10" r="4"/>
+              <line x1="10.5" y1="10" x2="18" y2="10"/><line x1="15.5" y1="10" x2="15.5" y2="12.5"/><line x1="13" y1="10" x2="13" y2="13"/>
+            </svg>
+          </span>Работа под ключ
+        </div>
+        <div class="trust-item">
+          <span class="trust-item__check">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#8B5A2B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M10 2L3 5.5V10c0 3.5 3 6.5 7 8 4-1.5 7-4.5 7-8V5.5L10 2z"/>
+              <polyline points="7,10 9,12 13,8"/>
+            </svg>
+          </span>Гарантия 5 лет
+        </div>
+        <div class="trust-item">
+          <span class="trust-item__check">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#8B5A2B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 2h8l4 4v12a1 1 0 01-1 1H4a1 1 0 01-1-1V3a1 1 0 011-1z"/>
+              <polyline points="12,2 12,6 16,6"/>
+              <line x1="7" y1="10" x2="13" y2="10"/><line x1="7" y1="13" x2="11" y2="13"/>
+            </svg>
+          </span>Фиксированная цена по договору
+        </div>
+        <div class="trust-item">
+          <span class="trust-item__check">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#8B5A2B" stroke-width="1.5" stroke-linecap="round">
+              <line x1="10" y1="2" x2="10" y2="18"/>
+              <line x1="2" y1="10" x2="18" y2="10"/>
+              <line x1="5" y1="5" x2="15" y2="15"/>
+              <line x1="15" y1="5" x2="5" y2="15"/>
+            </svg>
+          </span>Балкон пригоден круглый год
+        </div>
+        <div class="trust-item">
+          <span class="trust-item__check">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#8B5A2B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="1" y="6" width="13" height="10" rx="2"/>
+              <circle cx="7.5" cy="11" r="2.5"/>
+              <path d="M14 9.5l5-2v7l-5-2"/>
+            </svg>
+          </span>Сдача объекта с тепловизором
+        </div>
       </div>
     </div>
   </div>
