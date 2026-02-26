@@ -462,6 +462,32 @@
       transform: translateY(0);
     }
 
+    @keyframes btn-shimmer {
+      0%   { transform: translateX(-120%) skewX(-20deg); }
+      100% { transform: translateX(300%) skewX(-20deg); }
+    }
+
+    .btn-primary,
+    .nav__cta,
+    .btn-light {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary::after,
+    .nav__cta::after,
+    .btn-light::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 35%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 220, 120, 0.45), transparent);
+      animation: btn-shimmer 2.8s ease-in-out infinite;
+      pointer-events: none;
+    }
+
     .hero__micro {
       font-size: 12px;
       color: var(--color-text-muted);
